@@ -1,0 +1,1 @@
+https://hackpad.com/Finalistas-CoMapp-Qu-sigue-en-la-etapa-de-prototipos-2KqPVaDPMOu

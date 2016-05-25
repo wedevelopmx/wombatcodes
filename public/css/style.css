@@ -1,0 +1,43 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#main {
+	position: relative;
+	padding-bottom: 50px;
+	padding-top: 50px;	
+}
+
+.content {
+    padding: 1rem;
+}
+
+.row {
+	position: relative;
+}
+
+.bgm-red {
+	background-color: #f44336 !important
+}
+
+.btn.bgm-red.btn-float.waves-effect {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
+
+.search-input {
+    height: 18px;
+    font-size: 0.8rem;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    border-width: 0px 0px 1px;
+    border-style: none none solid;
+    border-color: -moz-use-text-color -moz-use-text-color rgb(255, 255, 255);
+    border-radius: 0px;
+}
+

@@ -1,0 +1,46 @@
+<div class="sidebar-inner c-overflow">    
+    <div class="profile-menu">
+        <a href="" toggle-submenu>
+            <div class="profile-pic">
+                <img src="{{user.profileimageurl}}" alt="">
+            </div>
+
+            <div class="profile-info">
+                <span ng-bind="user.displayname">Guest</span>
+                <i class="fa fa-gear"></i>
+            </div>
+        </a>
+
+        <!-- <ul class="main-menu">
+            <li>
+                <a data-ui-sref="pages.profile.profile-about" data-ng-click="mactrl.sidebarStat($event)"><i class="fa fa-account"></i> View Profile</a>
+            </li>
+            <li>
+                <a href=""><i class="fa fa-input-antenna"></i> Privacy Settings</a>
+            </li>
+            <li>
+                <a href=""><i class="fa fa-settings"></i> Settings</a>
+            </li>
+            <li>
+                <a href=""><i class="fa fa-time-restore"></i> Logout</a>
+            </li>
+        </ul> -->
+    </div>
+
+    <ul class="main-menu">
+        
+        <li>
+            <a href="#/"><i class="fa fa-home"></i> Home</a>
+        </li>
+        <li permission="['admin']">
+            <a href="#/projects"><i class="fa fa-suitcase"></i> Proyectos</a>
+        </li>
+        <li permission="['admin']">
+            <a href="#/surveys"><i class="fa fa-file-text"></i> Surveys</a>
+        </li>
+        <li permission="['admin']">
+            <a href="#/team"><i class="fa fa-users"></i> Equipo</a>
+        </li>
+        
+    </ul>
+</div>

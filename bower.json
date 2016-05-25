@@ -1,0 +1,31 @@
+{
+  "name": "geospatial",
+  "version": "0.0.0",
+  "authors": [
+    "Cristian Colorado <cristian@wedevelop.mx)"
+  ],
+  "description": "Geospatial Analysis",
+  "main": "bin/www",
+  "keywords": [
+    "geospatial",
+    "nodejs"
+  ],
+  "license": "MIT",
+  "homepage": "wedevelop.mx",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "fontawesome": "~4.6.2",
+    "angular": "1.4.9",
+    "angular-route": "1.4.9",
+    "angular-resource": "1.4.9",
+    "angular-sanitize": "1.4.9",
+    "ngstorage": "~0.3.10"
+  }
+}

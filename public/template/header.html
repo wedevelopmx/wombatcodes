@@ -1,0 +1,26 @@
+<ul class="header-inner clearfix">
+    <li id="menu-trigger" ng-click="toggleSidebar()">
+        <div class="line-wrap">
+            <div class="line top"></div>
+            <div class="line center"></div>
+            <div class="line bottom"></div>  
+        </div>
+    </li>
+
+    <li class="hidden-xs logo">
+        <a href="#/" class="m-l-10" data-ng-click="mactrl.sidebarStat($event)">
+        	<img src="img/logo.png" alt="">
+        </a>
+    </li>
+
+    <li class="pull-right">
+        <ul class="top-menu">
+            <li id="top-search" ng-show="user">
+                <a ng-click="logout()"><span class="tm-label">Logout</span></a>
+            </li>
+            <li id="top-search" ng-hide="user">
+                <a href="/auth/google"><span class="tm-label">Login</span></a>
+            </li>
+        </ul>
+    </li>
+</ul>
