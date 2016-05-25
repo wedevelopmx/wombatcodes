@@ -1,12 +1,11 @@
 // config/passport.js
 
 var passport = require('passport');
+var github = require('octonode');
 
 // load all the things we need
 var LocalStrategy    = require('passport-local').Strategy;
-// var FacebookStrategy = require('passport-facebook').Strategy;
-// var TwitterStrategy  = require('passport-twitter').Strategy;
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var GitHubStrategy = require('passport-github2').Strategy;
 
 // load up the user model
 var models       = require('../models');
@@ -32,50 +31,51 @@ passport.deserializeUser(function(id, done) {
 
 });
 
-// code for login (use('local-login', new LocalStategy))
-// code for signup (use('local-signup', new LocalStategy))
-// code for facebook (use('facebook', new FacebookStrategy))
-// code for twitter (use('twitter', new TwitterStrategy))
-
 // =========================================================================
-// GOOGLE ==================================================================
+// GITHUB ==================================================================
 // =========================================================================
-passport.use(new GoogleStrategy({
-    clientID        : configAuth.googleAuth.clientID,
-    clientSecret    : configAuth.googleAuth.clientSecret,
-    callbackURL     : configAuth.googleAuth.callbackURL,
+passport.use(new GitHubStrategy({
+    clientID        : configAuth.githubAuth.clientID,
+    clientSecret    : configAuth.githubAuth.clientSecret,
+    callbackURL     : configAuth.githubAuth.callbackURL,
     },
     function(accessToken, refreshToken, profile, done) {
 
-        // make the code asynchronous
-        // User.findOne won't fire until we have all our data back from Google
-        process.nextTick(function() {
+      var client = github.client(accessToken);
 
-            console.log(profile);
+      var user = { 
+        displayName: profile.displayName,
+        company: profile._json.company || '',
+        blog: profile._json.blog || '',
+        location: profile._json.location || '',
+        email: profile._json.email || '',
+        bio: profile._json.bio || '',
+        avatar: profile._json.avatar_url || '',
+        vendor: profile.provider,
+        vendorJoinedAt: profile._json.created_at || '',
+        vendorUpdatedAt: profile._json.updated_at || '',
+        vendorHtmlUrl: profile._json.html_url || '',
+        vendorReposUrl: profile._json.repos_url  || '',
+        token: accessToken
+      }
 
-            var providerData = profile._json;
-            providerData.accessToken = accessToken;
-            providerData.refreshToken = refreshToken;
-
-            var user = {
-              displayname: profile.displayName,
-              firstname: profile.name.givenName,
-              lastname: profile.name.familyName,
-              email: profile.emails[0].value,
-              profileimageurl: profile.photos[0].value,
-              provider: profile.provider,
-              providerid: profile.id
-            };
+      client.get('/user/emails', {}, function (err, status, data, headers) {
+        for(i in data) {
+          if(data[i].primary !== undefined && data[i].primary) {
+            user.email = data[i].email;
+            console.log(user);
 
             models.User
-              .findOrCreate({where: { providerid: user.providerid }, defaults: user})
+              .findOrCreate({ where: { email: user.email }, defaults: user })
               .spread(function(user, created) {
                 console.log(user.get({
                   plain: true
                 }));
                 return done(null, user);
               });
-        });
+          }
+        }
+      });
 
     }));
 

@@ -15,6 +15,16 @@ module.exports = function(passport) {
                 failureRedirect : '/error'
         }));
 
+	//Github
+	router.get('/github',
+	  passport.authenticate('github', { scope: [ 'user', 'repo' ] }));
+
+	router.get('/github/callback', 
+	  passport.authenticate('github', {
+            successRedirect : '/',
+            failureRedirect : '/error'
+        }));
+
 	router.get('/logout', function(req, res){ 
 		req.logout(); 
 		res.send(200);
