@@ -34,7 +34,6 @@ angular.module('geospatial', ['ngRoute', 'ngResource', 'ngStorage', 'textAngular
 			templateUrl: 'template/content/repo-content.html',
 			controller: 'RepoContentController'
 		},
-
 		'/': {
 			templateUrl: 'template/dashboard.html',
 			controller: 'DashboardController'
