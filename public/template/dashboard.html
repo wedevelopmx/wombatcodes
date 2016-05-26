@@ -1,4 +1,112 @@
 <div class="full-screen">
-    
-</div>
+  <!-- profile section -->
+  <div class="container">
 
+    <div class="row">
+      <!-- block profile -->
+      <div class="card" id="profile-main"> <!--data-ng-controller="" -->
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="p-relative">
+                    <a href="">
+                        <img class="img-responsive" src="{{profile.profile_pic}}" alt="">
+                    </a>
+
+                    <div class="dropdown pmop-message" uib-dropdown>
+                        <button uib-dropdown-toggle class="btn bgm-white btn-float">
+                            <i class="zmdi zmdi-comment-text-alt"></i>
+                        </button>
+
+                        <div class="dropdown-menu stop-propagate">
+                            <textarea placeholder="Write something..."></textarea>
+
+                            <button class="btn bgm-green btn-float"><i class="zmdi zmdi-mail-send"></i></button>
+                        </div>
+                    </div>
+
+                    <a href="" class="pmop-edit">
+                        <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Update Profile Picture</span>
+                    </a>
+                </div>
+
+
+                <div class="pmo-stat">
+                    <!--<h2 class="m-0 c-white">{{profile.repositories}}</h2>
+                    Published Respositories-->
+                    <h4 class="m-0 c-white">{{profile.name}} Malinda Hollaway</h4>
+                    {{profile.role}}, {{profile.location}}Web/UI Developer, Dubai, United Arab Emirates
+                </div>
+            </div>
+
+            <div class="pmo-block pmo-contact hidden-xs">
+                <h2>Contact</h2>
+
+                <ul>
+                    <li><i class="zmdi zmdi-email"></i> {{ profile.emailAddress }}</li>
+                    <!--<li><i class="zmdi zmdi-facebook-box"></i> {{ profile.gituser }}</li>-->
+                    <li>
+                        <i class="zmdi zmdi-pin"></i>
+                        <address class="m-b-0">
+                            {{ pctrl.addressCountry }}
+                        </address>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <div class="pm-body clearfix">
+            <ul class="tab-nav tn-justified" data-ng-include="'template/profile/profile-menu.html'"></ul>
+            <data ui-view></data>
+        </div>
+      </div> <!-- end block profile -->
+    </div> <!-- end row -->
+    <div class="row">
+      <div class="col-sm-4">
+          <div class="card">
+              <div class="card-header ch-alt">
+                  <h2>Alternative Example <small>You can type anything here...</small></h2>
+
+                  <ul class="actions">
+                      <li>
+                          <a href="">
+                              <i class="zmdi zmdi-refresh-alt"></i>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="">
+                              <i class="zmdi zmdi-download"></i>
+                          </a>
+                      </li>
+                      <li class="dropdown" uib-dropdown>
+                          <a href="" uib-dropdown-toggle>
+                              <i class="zmdi zmdi-more-vert"></i>
+                          </a>
+
+                          <ul class="dropdown-menu dropdown-menu-right">
+                              <li>
+                                  <a href="">Change Date Range</a>
+                              </li>
+                              <li>
+                                  <a href="">Change Graph Type</a>
+                              </li>
+                              <li>
+                                  <a href="">Other Settings</a>
+                              </li>
+                          </ul>
+                      </li>
+                  </ul>
+              </div>
+
+              <div class="card-body card-padding">
+                  Cras leo sem, egestas a accumsan eget, euismod at nunc. Praesent vel mi blandit, tempus ex gravida, accumsan dui. Sed sed aliquam augue. Nullam vel suscipit purus, eu facilisis ante. Mauris nec commodo felis.
+              </div>
+          </div>
+      </div>
+      <button class="btn bgm-amber btn-icon pull-right"><i class="zmdi zmdi-plus"></i></button>
+    </div>
+  </div> <!-- end profile section -->
+
+
+</div>
