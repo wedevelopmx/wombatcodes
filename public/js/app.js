@@ -34,7 +34,10 @@ angular.module('geospatial', ['ngRoute', 'ngResource', 'ngStorage', 'textAngular
 			templateUrl: 'template/content/repo-content.html',
 			controller: 'RepoContentController'
 		},
-
+		'/search': {
+			templateUrl: 'template/search/search-main.html',
+			controller: 'SearchController'
+		},
 		'/': {
 			templateUrl: 'template/dashboard.html',
 			controller: 'DashboardController'
