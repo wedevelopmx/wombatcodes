@@ -26,6 +26,8 @@
     "angular-route": "1.4.9",
     "angular-resource": "1.4.9",
     "angular-sanitize": "1.4.9",
-    "ngstorage": "~0.3.10"
+    "ngstorage": "~0.3.10",
+    "material-design-iconic-font": "~2.1.1",
+    "angular-bootstrap": "~1.3.2"
   }
 }
