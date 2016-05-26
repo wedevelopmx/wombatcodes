@@ -9,6 +9,17 @@ router.get('/', function(req, res, next) {
 	});
 });
 
+router.get('/repos', function(req, res, next) {
+  console.log(req.user.token);
+  var client = github.client(req.user.token);
+
+  client.get('/user/repos', { affiliation: 'owner' }, function (err, status, data, headers) {
+    res.json(data);
+  });
+
+
+});
+
 router.post('/', function(req, res, next) {
 	console.log(req.body);
 		
