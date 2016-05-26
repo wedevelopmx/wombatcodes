@@ -1,4 +1,4 @@
-angular.module('geospatial', ['ngRoute', 'ngResource', 'ngStorage'])
+angular.module('geospatial', ['ngRoute', 'ngResource', 'ngStorage', 'ui.bootstrap'])
 	.config(['$httpProvider', function($httpProvider) {  
 		// $httpProvider.interceptors.push(function($q, $location,$rootScope) { 
 		// 	return { 
@@ -32,6 +32,10 @@ angular.module('geospatial', ['ngRoute', 'ngResource', 'ngStorage'])
 		'/': {
 			templateUrl: 'template/dashboard.html',
 			controller: 'DashboardController'
+		},
+		'/profile': {
+			templateUrl: 'template/profile/profile.html',
+			controller: 'ProfileController'
 		}
 	})
 	.config(['$routeProvider', 'policies', function($routeProvider, policies) {
