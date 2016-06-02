@@ -1,4 +1,11 @@
-angular.module('geospatial', ['ngRoute', 'ngResource', 'ngStorage', 'textAngular', 'ui.bootstrap'])
+angular.module('geospatial', [
+	'ngRoute',
+	'ngResource',
+	'ngStorage',
+	'textAngular',
+	'ui.bootstrap'
+	])
+	.constant('clientTokenPath', '/client-token')
 	.config(['$httpProvider', function($httpProvider) {
 		// $httpProvider.interceptors.push(function($q, $location,$rootScope) {
 		// 	return {
@@ -37,6 +44,10 @@ angular.module('geospatial', ['ngRoute', 'ngResource', 'ngStorage', 'textAngular
 		'/search': {
 			templateUrl: 'template/search/search-main.html',
 			controller: 'SearchController'
+		},
+		'/payment': {
+			templateUrl: 'template/payment/payment.html',
+			controller: 'PaymentController'
 		},
 		'/': {
 			templateUrl: 'template/dashboard.html',
