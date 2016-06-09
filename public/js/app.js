@@ -41,6 +41,14 @@ angular.module('geospatial', ['ngRoute', 'ngResource', 'ngStorage', 'textAngular
 		'/profile': {
 			templateUrl: 'template/profile/profile.html',
 			controller: 'ProfileController'
+		},
+		'/profile/import': {
+			templateUrl: 'template/profile/import.html',
+			controller: 'GithubImportController'
+		},
+		'/profile/import/:user/:repo': {
+			templateUrl: 'template/profile/import-project.html',
+			controller: 'GithubImportController'
 		}
 
 	})

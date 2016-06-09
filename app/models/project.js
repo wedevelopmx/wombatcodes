@@ -3,10 +3,19 @@
 module.exports = function(sequelize, DataTypes) {
   var Project = sequelize.define("Project", {
     title: DataTypes.STRING,
-    description: DataTypes.TEXT
+    description: DataTypes.STRING,
+    pageContent: DataTypes.TEXT,
+    price: DataTypes.FLOAT,
+    type: DataTypes.STRING,
+    githubId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
+
+        //Project.hasMany(models.ProjectCategory, as: 'projectCategories');
+        Project.belongsToMany(models.Category, {through: 'ProjectCategory'});
+        Project.hasMany(models.Language, {as: 'languages'});
+
         Project.belongsTo(models.User, {
           onDelete: "CASCADE",
           foreignKey: {

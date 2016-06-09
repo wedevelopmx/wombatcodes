@@ -1,4 +1,4 @@
 angular.module('geospatial')
-	.controller('ProfileController', ['$scope', function($scope) {
+	.controller('ProfileController', ['$scope', '$http', function($scope, $http) {
 		
 	}]);
