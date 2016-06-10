@@ -14,6 +14,8 @@ var passport = require('./config/passport');
 var auth = require('./routes/auth')(passport);
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var project = require('./routes/project');
+var category = require('./routes/category');
 
 var app = express();
 
@@ -49,6 +51,8 @@ function isLoggedIn(req, res, next) {
 app.use('/', routes);
 app.use('/auth', auth);
 app.use('/user', users);
+app.use('/project', project);
+app.use('/category', category);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

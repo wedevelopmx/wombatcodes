@@ -6,6 +6,19 @@ angular.module('geospatial')
 			    $scope.repos = res.data;
 			});    
         } else {
+        	$scope.project = {
+        		title: '',
+			    description: '',
+			    pageContent: '',
+			    price: '',
+			    type: '',
+			    githubId: ''
+        	};
+
+        	$scope.languages = [];
+
+        	$scope.categories = [];
+
             $scope.repo = {};
 			
 			$http.get('/user/import/' + $routeParams.user + '/' + $routeParams.repo)
@@ -13,8 +26,12 @@ angular.module('geospatial')
 					var colors = ['#009688', '#F44336', '#03A9F4', '#8BC34A', '#FFEB3B'];
 					$scope.pieData = [];
 					$scope.repo = res.data;
-					console.log(res.data);
 
+					$scope.project.title = $scope.repo.name;
+					$scope.project.description = $scope.repo.description;
+					$scope.project.githubId = $scope.repo.id;
+
+					//Pull out languages
 					angular.forEach($scope.repo.languages, function(value, key) {
 						console.log(value + ' is ' + key);
 						$scope.pieData.push({
@@ -22,8 +39,11 @@ angular.module('geospatial')
 							data: value,
 							color: colors.pop()
 						});
+
+						$scope.languages.push({ name: key, lines: value});
 					});
 
+					//Graph Languages
                     if($('#donut-chart')[0]){
 		                $.plot('#donut-chart', $scope.pieData, {
 		                    series: {
@@ -65,12 +85,24 @@ angular.module('geospatial')
 
         $scope.categories = [];
         $scope.addCategory = function() {
-        	$scope.categories.push($scope.category);
-        	$scope.category = '';
+        	$http.post('/category', { name: $scope.category })
+				.then(function(res) {
+					$scope.categories.push(res.data);
+        			$scope.category = '';
+				});      
         }
 
         $scope.removeCategory = function(index) {
         	$scope.categories.splice(index, 1);
+        }
+
+        $scope.submitProject = function() {
+        	$scope.project.languages = $scope.languages;
+        	$scope.project.categories = $scope.categories;
+        	$http.post('/project', $scope.project)
+				.then(function(res) {
+					console.log(res);
+				});
         }
 		
 	}]);

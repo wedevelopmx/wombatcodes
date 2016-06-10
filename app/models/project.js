@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.STRING,
     pageContent: DataTypes.TEXT,
     price: DataTypes.FLOAT,
+    rate: DataTypes.FLOAT,
     type: DataTypes.STRING,
     githubId: DataTypes.INTEGER
   }, {
