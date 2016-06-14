@@ -121,10 +121,10 @@
       </div>
     </div> <!-- end row -->
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-4" ng-repeat="project in projects">
           <div class="card">
               <div class="card-header ch-alt">
-                  <h2>Alternative Example <small>You can type anything here...</small></h2>
+                  <h2>{{project.title}} <small>{{project.description}}</small></h2>
 
                   <ul class="actions">
                       <li>
@@ -155,14 +155,13 @@
                           </ul>
                       </li>
                   </ul>
+                
               </div>
 
-              <div class="card-body card-padding">
-                  Cras leo sem, egestas a accumsan eget, euismod at nunc. Praesent vel mi blandit, tempus ex gravida, accumsan dui. Sed sed aliquam augue. Nullam vel suscipit purus, eu facilisis ante. Mauris nec commodo felis.
-              </div>
+              <div class="card-body card-padding" ng-bind-html="project.pageContent"></div>
           </div>
       </div>
-      <button class="btn bgm-amber btn-icon pull-right"><i class="zmdi zmdi-plus"></i></button>
+      <a href="#/profile/import" class="btn bgm-amber btn-icon pull-right"><i class="zmdi zmdi-plus"></i></a>
     </div>
   </div> <!-- end profile section -->
 

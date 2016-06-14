@@ -93,32 +93,6 @@ angular.module('geospatial')
         });
     };
      
-     
-    // auth.checkPermissionForView = function(view) {
-    //     var route = $sessionStorage.policies[view]
-
-    //     if (!route.requiresAuthentication) {
-    //         return true;
-    //     }
-         
-    //     return auth.userHasPermissionForView(view);
-    // };
-     
-     
-    // auth.userHasPermissionForView = function(view){
-    //     if(!auth.isLoggedIn()){
-    //         return false;
-    //     }
-    //     console.log(view);
-    //     var policy = policies[view];
-    //     if(!policy.permissions || !policy.permissions.length){
-    //         return true;
-    //     }
-         
-    //     return auth.userHasPermission(policy.permissions);
-    // };
-     
-     
     auth.userHasPermission = function(permissions){
         if(!auth.isLoggedIn()){
             return false;

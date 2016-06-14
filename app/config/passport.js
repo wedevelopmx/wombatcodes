@@ -68,9 +68,12 @@ passport.use(new GitHubStrategy({
             models.User
               .findOrCreate({ where: { email: user.email }, defaults: user })
               .spread(function(user, created) {
-                console.log(user.get({
-                  plain: true
-                }));
+                if(!created && user.token !== accessToken)
+                  user.update({ token: accessToken}, {fields: ['token']})
+                    .then(function(updateUser) {
+                         console.log(updateUser);
+                    });
+
                 return done(null, user);
               });
           }

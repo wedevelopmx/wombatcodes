@@ -1,4 +1,6 @@
 angular.module('geospatial')
-	.controller('ProfileController', ['$scope', function($scope) {
-		
+	.controller('ProfileController', ['$scope', 'ProjectService', function($scope, ProjectService) {
+
+		$scope.projects = ProjectService.getUserProjects($scope.user.id);
+
 	}]);

@@ -9560,6 +9560,12 @@ a.lv-footer:hover {
   font-size: 17px;
   font-weight: 400;
 }
+.card-header h2 input {
+  border: medium none transparent;
+  height: 23px;
+  border-bottom: 1px solid #cecece;
+  width: 100%;
+}
 .card-header h2 small {
   display: block;
   margin-top: 5px;
@@ -14750,6 +14756,12 @@ body.login-content:before {
     stroke: #FFC107;
   }
 }
+.card-header h2 input {
+  border: medium none transparent;
+  height: 23px;
+  border-bottom: 1px solid #cecece;
+  width: 100%;
+}
 @media print {
   @page {
     margin: 0;
@@ -16150,4 +16162,30 @@ select.chosen {
 }
 .mCSB_inside > .mCSB_container {
   margin-right: 0;
+}
+/*
+ *  Wombat
+*/
+.categories {
+  list-style-type: none;
+  padding: 0;
+  padding-bottom: .5rem;
+  margin-top: 1rem;
+  border-bottom: 1px solid #cecece;
+}
+.categories .category {
+  display: inline-block;
+  padding: .5rem;
+  margin-right: 1rem;
+  color: #fff;
+  border: 1px solid #03a9f4;
+  border-radius: 2px;
+  background-color: #03a9f4;
+}
+.categories .category i {
+  padding-left: 10px;
+}
+.categories input {
+  border: none;
+  padding: .5rem;
 }
