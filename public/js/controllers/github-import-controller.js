@@ -1,5 +1,5 @@
 angular.module('geospatial')
-	.controller('GithubImportController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+	.controller('GithubImportController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams) {
 		if($routeParams.user == undefined) {
         	$scope.repos = [];
 			$http.get('/user/repos').then(function(res) {
@@ -102,6 +102,7 @@ angular.module('geospatial')
         	$http.post('/project', $scope.project)
 				.then(function(res) {
 					console.log(res);
+					$location.path( "/profile" );
 				});
         }
 		

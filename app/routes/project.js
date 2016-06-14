@@ -5,8 +5,19 @@ var Sequelize = require('sequelize');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+
+  var user = {
+    attributes: ['id', 'displayName', 'avatar'],
+    model: models.User
+  };
+
+  if(req.query.userId !== undefined)
+    user.where = {
+      id: req.query.userId
+    };
+
   models.Project.findAll({
-    attributes: ['title', 'description', 'price', 'rate', 'type'],
+    attributes: ['title', 'description', 'pageContent', 'price', 'rate', 'type'],
     include: [{
       attributes: ['name'],
       model: models.Category,
@@ -18,7 +29,7 @@ router.get('/', function(req, res, next) {
       attributes: ['name', 'lines'],
       model: models.Language,
       as: 'languages'
-    }]  
+    }, user]  
   })
   .then(function(users) {
 		res.json(users);
