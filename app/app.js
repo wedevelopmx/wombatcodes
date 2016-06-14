@@ -16,6 +16,8 @@ var auth = require('./routes/auth')(passport);
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var payments = require('./routes/payments')(braintree, bodyParser.json());
+var project = require('./routes/project');
+var category = require('./routes/category');
 
 var app = express();
 
@@ -66,6 +68,8 @@ app.use('/', routes);
 app.use('/auth', auth);
 app.use('/user', users);
 app.use('/payment', payments);
+app.use('/project', project);
+app.use('/category', category);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
