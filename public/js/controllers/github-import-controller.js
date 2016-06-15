@@ -97,12 +97,11 @@ angular.module('geospatial')
         	$scope.categories.splice(index, 1);
         }
 
-				var IndataWebGenerator = {};
 
 				$scope.submitProject = function() {
 
 					/// 1. create the repo web page
-					IndataWebGenerator = {
+					var IndataWebGenerator = {
 						path1: $routeParams.user,
 						path2: $routeParams.repo,
 						path3: "v1",
@@ -110,6 +109,7 @@ angular.module('geospatial')
 					};
 
 					console.log(IndataWebGenerator);
+					// webGenerator(IndataWebGenerator); //-> generate the web page
 
 					/// 2. update the profile with the repo
         	$scope.project.languages = $scope.languages;
@@ -120,12 +120,22 @@ angular.module('geospatial')
 						$location.path( "/profile" );
 					});
 
-					/// 3. insert into elasticsearch searcher
+					/// 3. insert repo into elasticsearch searcher
+					var rawPageContent = $scope.project.pageContent;
+					rawPageContent = String(rawPageContent).replace(/<[^>]+>/gm, ' ');
+					console.log(rawPageContent);
+					var IndataElasticSearch = {
+						cont: $scope.project.rawPageContent ,  // content
+						ct: $scope.project.categories ,     // categories
+ 						scr: ''                            // score
+					};
+					//insertRepoElasticSearch(IndataElasticSearch ); //--> insert the repo in elastic search
+
 
         }
 
 
-				$scope.webGenerator = function() {
+				var webGenerator = function(IndataWebGenerator) {
 					console.log("generate");
 
 					/// listen in port 3001
@@ -141,7 +151,20 @@ angular.module('geospatial')
 							$scope.message = 'Error: cannot connect to server. Please make sure your server is running.';
 							console.log(error);
 						});
+				}
 
+				var insertRepoElasticSearch = function(IndataElasticSearch ) {
+					/// listen in port 9200
+					$http({
+						method: 'POST',
+						url: 'http://localhost:9200/gitrepo/repos/' ,
+						data: IndataElasticSearch
+					}).success(function (data)  {
+						console.log(data.success);
+					}).error(function (error) {
+						$scope.message = 'Error: cannot connect to server. Please make sure your server is running.';
+						console.log(error);
+					});
 				}
 
 	}]);
