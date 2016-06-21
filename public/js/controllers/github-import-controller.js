@@ -1,10 +1,11 @@
 angular.module('geospatial')
 	.controller('GithubImportController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams) {
+
 		if($routeParams.user == undefined) {
         	$scope.repos = [];
 			$http.get('/user/repos').then(function(res) {
 			    $scope.repos = res.data;
-			});    
+			});
         } else {
         	$scope.project = {
         		title: '',
@@ -20,7 +21,7 @@ angular.module('geospatial')
         	$scope.categories = [];
 
             $scope.repo = {};
-			
+
 			$http.get('/user/import/' + $routeParams.user + '/' + $routeParams.repo)
 				.then(function(res) {
 					var colors = ['#009688', '#F44336', '#03A9F4', '#8BC34A', '#FFEB3B'];
@@ -50,7 +51,7 @@ angular.module('geospatial')
 		                        pie: {
 		                            innerRadius: 0.5,
 		                            show: true,
-		                            stroke: { 
+		                            stroke: {
 		                                width: 2,
 		                            },
 		                        },
@@ -86,24 +87,84 @@ angular.module('geospatial')
         $scope.categories = [];
         $scope.addCategory = function() {
         	$http.post('/category', { name: $scope.category })
-				.then(function(res) {
+					.then(function(res) {
 					$scope.categories.push(res.data);
         			$scope.category = '';
-				});      
+					});
         }
 
         $scope.removeCategory = function(index) {
         	$scope.categories.splice(index, 1);
         }
 
-        $scope.submitProject = function() {
+
+				$scope.submitProject = function() {
+
+					/// 1. create the repo web page
+					var IndataWebGenerator = {
+						path1: $routeParams.user,
+						path2: $routeParams.repo,
+						path3: "v1",
+						html: $scope.project.pageContent
+					};
+
+					console.log(IndataWebGenerator);
+					// webGenerator(IndataWebGenerator); //-> generate the web page
+
+					/// 2. update the profile with the repo
         	$scope.project.languages = $scope.languages;
         	$scope.project.categories = $scope.categories;
         	$http.post('/project', $scope.project)
-				.then(function(res) {
-					console.log(res);
-					$location.path( "/profile" );
-				});
+					.then(function(res) {
+						console.log(res);
+						$location.path( "/profile" );
+					});
+
+					/// 3. insert repo into elasticsearch searcher
+					var rawPageContent = $scope.project.pageContent;
+					rawPageContent = String(rawPageContent).replace(/<[^>]+>/gm, ' ');
+					console.log(rawPageContent);
+					var IndataElasticSearch = {
+						cont: $scope.project.rawPageContent ,  // content
+						ct: $scope.project.categories ,     // categories
+ 						scr: ''                            // score
+					};
+					//insertRepoElasticSearch(IndataElasticSearch ); //--> insert the repo in elastic search
+
+
         }
-		
+
+
+				var webGenerator = function(IndataWebGenerator) {
+					console.log("generate");
+
+					/// listen in port 3001
+						$http({
+							method: 'POST',
+							url: 'http://localhost:3001/generator/api/createweb',
+							data: IndataWebGenerator
+						}).success(function (data)  {
+
+							console.log(data.success);
+
+						}).error(function (error) {
+							$scope.message = 'Error: cannot connect to server. Please make sure your server is running.';
+							console.log(error);
+						});
+				}
+
+				var insertRepoElasticSearch = function(IndataElasticSearch ) {
+					/// listen in port 9200
+					$http({
+						method: 'POST',
+						url: 'http://localhost:9200/gitrepo/repos/' ,
+						data: IndataElasticSearch
+					}).success(function (data)  {
+						console.log(data.success);
+					}).error(function (error) {
+						$scope.message = 'Error: cannot connect to server. Please make sure your server is running.';
+						console.log(error);
+					});
+				}
+
 	}]);
