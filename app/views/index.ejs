@@ -39,10 +39,10 @@
 
   </head>
   <body ng-app="geospatial" ng-controller="MainController as mainCtrl">
-  	<header id="header" data-ng-include="'template/header.html'"></header>
+  	<header id="header" data-ng-include="'assets/template/header.html'"></header>
 
   	<section id="main">
-	  	<aside id="sidebar" data-ng-include="'template/sidebar.html'"></aside>
+	  	<aside id="sidebar" data-ng-include="'assets/template/sidebar.html'"></aside>
         <section class="notification" ng-class="{ active: message }" >
             <span ng-class="{danger: message.type == 'danger'}" ng-bind="message.text"></span>
         </section>
