@@ -1,0 +1,42 @@
+<ul class="header-inner clearfix">
+    <!--<li id="menu-trigger" ng-click="toggleSidebar()">
+        <div class="line-wrap">
+            <div class="line top"></div>
+            <div class="line center"></div>
+            <div class="line bottom"></div>
+        </div>
+    </li>-->
+    
+    <li class="pull-right">
+        <ul class="top-menu">
+            <li class="dropdown open" uib-dropdown>
+                <a aria-expanded="true" aria-haspopup="true" class=
+                "dropdown-toggle" href="" uib-dropdown-toggle><i class=
+                "tm-icon zmdi zmdi-more-vert"></i></a>
+           
+                <ul class="dropdown-menu dm-icon pull-right">
+                    <li ng-show="user">
+                        <a href="#/profile"><i class="zmdi zmdi-face"></i> Profile</a>
+                    </li>
+                    <li ng-show="user">
+                        <a href=""><i class="zmdi zmdi-settings"></i>Settings</a>
+                    </li>
+                    <li ng-show="user" class="divider hidden-xs"></li>
+                    <li ng-show="user">
+                        <a ng-click="logout()"><i class="zmdi zmdi-time-restore"></i>Logout</a>
+                    </li>
+                    <li ng-hide="user">
+                        <a href="/auth/github"><i class="zmdi zmdi-sign-in"></i>Login</a>
+                    </li>
+                </ul>
+
+                <li class="hidden-xs logo">
+                    <a href="#/" class="m-l-10" data-ng-click="mactrl.sidebarStat($event)">
+                        <!--<img src="img/logo.png" alt="">-->
+                      <!--<h4>Git Repos Market</h4>-->
+                    </a>
+                </li>
+            </li>
+        </ul>
+    </li>
+</ul>
