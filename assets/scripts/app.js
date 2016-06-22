@@ -2,8 +2,7 @@ angular.module('geospatial', [
 	'ngRoute',
 	'ngResource',
 	'ngStorage',
-	'textAngular',
-	'ui.bootstrap'
+	'textAngular'
 	])
 	.constant('clientTokenPath', '/client-token')
 	.config(['$httpProvider', function($httpProvider) {
@@ -38,31 +37,31 @@ angular.module('geospatial', [
 	.constant('policies',{
 
 		'/repo-content': {
-			templateUrl: 'template/content/repo-content.html',
+			templateUrl: 'assets/template/content/repo-content.html',
 			controller: 'RepoContentController'
 		},
 		'/search': {
-			templateUrl: 'template/search/search-main.html',
+			templateUrl: 'assets/template/search/search-main.html',
 			controller: 'SearchController'
 		},
 		'/payment': {
-			templateUrl: 'template/payment/payment.html',
+			templateUrl: 'assets/template/payment/payment.html',
 			controller: 'PaymentController'
 		},
 		'/': {
-			templateUrl: 'template/dashboard.html',
+			templateUrl: 'assets/template/dashboard.html',
 			controller: 'DashboardController'
 		},
 		'/profile': {
-			templateUrl: 'template/profile/profile.html',
+			templateUrl: 'assets/template/profile/profile.html',
 			controller: 'ProfileController'
 		},
 		'/profile/import': {
-			templateUrl: 'template/profile/import.html',
+			templateUrl: 'assets/template/profile/import.html',
 			controller: 'GithubImportController'
 		},
 		'/profile/import/:user/:repo': {
-			templateUrl: 'template/profile/import-project.html',
+			templateUrl: 'assets/template/profile/import-project.html',
 			controller: 'GithubImportController'
 		}
 

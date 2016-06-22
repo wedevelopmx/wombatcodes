@@ -2,8 +2,7 @@ angular.module('geospatial', [
 	'ngRoute',
 	'ngResource',
 	'ngStorage',
-	'textAngular',
-	'ui.bootstrap'
+	'textAngular'
 	])
 	.constant('clientTokenPath', '/client-token')
 	.config(['$httpProvider', function($httpProvider) {

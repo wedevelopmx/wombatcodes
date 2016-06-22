@@ -39,20 +39,44 @@
 
   </head>
   <body ng-app="geospatial" ng-controller="MainController as mainCtrl">
-  	<header id="header" data-ng-include="'assets/template/header.html'"></header>
+    <!--<header id="header" ng-include="'assets/template/header.html'"></header>-->
 
+          <!--<section class="notification" ng-class="{ active: message }" >
+              <span ng-class="{danger: message.type == 'danger'}" ng-bind="message.text"></span>
+          </section>-->
+  	      <!--<section ng-view></section>-->
+
+    <!-- content -->
+    <div id="content" class="app-content box-shadow-z0" role="main">
+  <div class="app-header navbar-md white box-shadow">
+        <div ng-include="'assets/template/header.html'"></div>
+      </div>
+      <div ng-view class="app-body" ng-class="{'container': app.setting.container}" id="view"></div>
+      <div class="dark dk pos-rlt" ng-class="{'hide': $state.current.data.hideFooter}">
+        <!--<div class="p-md" ng-class="{'container': app.setting.container}" >
+          <div ng-include="'assets/blocks/footer.1.html'"></div>
+        </div>-->
+      </div>
+    </div>
+    <!-- / -->
+
+    <!-- theme switcher -->
+    <div id="switcher">
+      <div ui-include="'assets/blocks/switcher.html'"></div>
+    </div>
+    <!-- / -->
+  <!--	<header id="header" data-ng-include="'assets/template/header.html'"></header>
   	<section id="main">
-	  	<aside id="sidebar" data-ng-include="'assets/template/sidebar.html'"></aside>
         <section class="notification" ng-class="{ active: message }" >
             <span ng-class="{danger: message.type == 'danger'}" ng-bind="message.text"></span>
         </section>
-	  	<section ng-view></section>
-	</section>
+	      <section ng-view></section>
+	  </section>-->
 
     <!-- content -->
-  <div id="content" class="app-content box-shadow-z0" role="main">
+  <!--<div id="content" class="app-content box-shadow-z0" role="main">
     <div class="app-header navbar-md white box-shadow">
-      <div ui-include="'../views/blocks/header.4.html'"></div>
+      <div ui-include="'assets/template/header.html'"></div>
     </div>
     <div ui-view class="app-body" ng-class="{'container': app.setting.container}" id="view"></div>
     <div class="dark dk pos-rlt" ng-class="{'hide': $state.current.data.hideFooter}">
@@ -60,13 +84,13 @@
         <div ui-include="'../views/blocks/footer.1.html'"></div>
       </div>
     </div>
-  </div>
+  </div>-->
   <!-- / -->
 
   <!-- theme switcher -->
-  <div id="switcher">
+<!--  <div id="switcher">
     <div ui-include="'../views/blocks/switcher.html'"></div>
-  </div>
+  </div>-->
   <!-- / -->
 
 
