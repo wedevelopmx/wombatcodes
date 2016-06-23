@@ -27,10 +27,9 @@ build/Release
 node_modules
 bower_components
 private/vendors
+public/libs
 dist
-libs
 db
-private/data_init/geo
 
 # Debug log from npm
 npm-debug.log
