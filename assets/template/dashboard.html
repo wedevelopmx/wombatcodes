@@ -101,25 +101,45 @@
 				<!-- bought repositories -->
 				<div class="box">
 	    		<div class="box-header b-b">
-	    			<h3>Bought Repositories <span class="label success">2</span></h3>
+	    			<h3>Bought Repositories <span class="label success">2</span>    <button class="btn btn-sm white"ng-click="toggleBoughtRepo()"><i class="fa fa-caret-down"></i></button></h3>
 	    		</div>
-	    		<div class="box-body">
-	    			<div class="row row-sm">
-
-	    			</div>
-	    		</div>
+					<div ng-hide="showBoughtRepo">
+						<ul class="list">
+							<li class="list-item" ng-repeat="repo in boughtRepos">
+								<div class="list-body">
+									<a href class="text-info">@{{repo.name}}</a>
+									<p>{{repo.content | limitTo: 180 }}{{repo.content.length > 180 ? ' [...]' : ''}}</p>
+									<div>
+										<span class="label success pos-rlt m-r-xs"><b class="arrow right b-success pull-in"></b>Tags</span>
+										<a href class="m-x-xs" ng-repeat="tech in repo.clasification">{{tech}}</a>
+										<small class="block text-muted"><i class="fa fa-fw fa-{{repo.type}}"></i>  ${{repo.price}}</small>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
 	    	</div> <!-- end bought repositories -->
 
 				<!-- favorites repositories -->
 				<div class="box">
 	    		<div class="box-header b-b">
-	    			<h3>Favorites Repositories <span class="label success">1</span></h3>
+	    			<h3>Favorites Repositories <span class="label success">1</span>    <button class="btn btn-sm white"ng-click="toggleFavoriteRepo()"><i class="fa fa-caret-down"></i></button></h3>
 	    		</div>
-	    		<div class="box-body">
-	    			<div class="row row-sm">
-
-	    			</div>
-	    		</div>
+					<div ng-hide="showFavoriteRepo">
+						<ul class="list">
+							<li class="list-item" ng-repeat="repo in favoriteRepos">
+								<div class="list-body">
+									<a href class="text-info">@{{repo.name}}</a>
+									<p>{{repo.content | limitTo: 180 }}{{repo.content.length > 180 ? ' [...]' : ''}}</p>
+									<div>
+										<span class="label success pos-rlt m-r-xs"><b class="arrow right b-success pull-in"></b>Tags</span>
+										<a href class="m-x-xs" ng-repeat="tech in repo.clasification">{{tech}}</a>
+										<small class="block text-muted"><i class="fa fa-fw fa-{{repo.type}}"></i>  ${{repo.price}}</small>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
 	    	</div> <!-- end favorites repositories -->
 
 	  	</div>
@@ -128,9 +148,21 @@
 	    		<div class="box-header">
 	    			<h4>Best Repositories</h4>
 	    		</div>
-					<div class="list-group">
-
-		      </div>
+					<div>
+						<ul class="list">
+							<li class="list-item" ng-repeat="repo in bestRepos">
+								<div class="list-body">
+									<a href class="text-info">@{{repo.name}}</a>
+									<p>{{repo.content | limitTo: 180 }}{{repo.content.length > 180 ? ' [...]' : ''}}</p>
+									<div>
+										<span class="label success pos-rlt m-r-xs"><b class="arrow right b-success pull-in"></b>Tags</span>
+										<a href class="m-x-xs" ng-repeat="tech in repo.clasification">{{tech}}</a>
+										<small class="block text-muted"><i class="fa fa-fw fa-{{repo.type}}"></i>  ${{repo.price}}</small>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
 	      </div>
 	      <div class="box light lt p-a-lg text-center">
 	        AD
