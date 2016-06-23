@@ -6,11 +6,11 @@ angular.module('geospatial')
 			name: 'Jason Warren',
 			tech: 'Full stack developer',
 			web: 'www.wombatcodes.com',
-			contect: '@gmail.com',
+			contact: '@gmail.com',
 			repos: '2',
 			purchased: '2',
 			favorities: '1',
-			profile: 'Donec a dui nulla. Praesent sed sagittis felis. Donec vel efficitur risus, a finibus neque.',
+			summary: 'Donec a dui nulla. Praesent sed sagittis felis. Donec vel efficitur risus, a finibus neque.',
 			location: 'London, UK'
 		};
 
