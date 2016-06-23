@@ -10,19 +10,15 @@
 										<i class="material-icons md-18">&#xe164;</i>
 									</a>
 									<div class="dropdown-menu dropdown-menu-scale pull-right dark">
-										<a class="dropdown-item" href>Activities</a>
-										<a class="dropdown-item" href>Feed</a>
-										<a class="dropdown-item" href>Photo</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item">Follow</a>
+										<a class="dropdown-item" href>Invite someone</a>
 									</div>
 								</li>
 							</ul>
 					</div>
 					<div class="p-a-md text-center">
 						<p><img src="../assets/images/a1.jpg" class="img-circle w-xs"></p>
-						<a href class="text-md block">Jason Warren</a>
-						<p><small>London, UK</small></p>
+						<a href class="text-md block">{{userProfile.name}}</a>
+						<p><small>{{userProfile.tech}}</small></p>
 						<div>
 							<a href="" class="btn btn-icon btn-social rounded white btn-sm">
 							<i class="fa fa-facebook"></i>
@@ -38,30 +34,35 @@
 						</a>
 						</div>
 						<div class="text-center m-t">
-							<a href class="btn btn-sm rounded {{app.setting.theme.primary}} w-sm m-y-xs">Follow</a>
-							<a href class="btn btn-sm rounded btn-outline b-{{app.setting.theme.primary}} w-sm">Invite</a>
+							<a ng-href="#/profile" class="btn btn-sm rounded {{app.setting.theme.primary}} w-sm m-y-xs">Go to my profile</a>
+							<!--<a href class="btn btn-sm rounded btn-outline b-{{app.setting.theme.primary}} w-sm">Invite</a>-->
 						</div>
 					</div>
 					<div class="row no-gutter b-t b-b">
-					<div class="col-xs-6 b-r">
+					<div class="col-xs-4 b-r">
 						<a class="p-a block text-center">
-							<span class="block _600">3219</span>
-							<span>Followers</span>
+							<span class="block _600">{{userProfile.repos}}</span>
+							<span>Repos</span>
 						</a>
 					</div>
-					<div class="col-xs-6">
+					<div class="col-xs-4 b-r">
 						<a class="p-a block text-center">
-							<span class="block _600">1458</span>
+							<span class="block _600">{{userProfile.purchased}}</span>
+							<span>Purchased</span>
+						</a>
+					</div>
+					<div class="col-xs-4">
+						<a class="p-a block text-center">
+							<span class="block _600">{{userProfile.favorities}}</span>
 							<span>Following</span>
 						</a>
 					</div>
 				</div>
 				<div class="p-a">
-					<a href class="text-ellipsis"><i class="fa fa-link text-muted m-r-sm"></i> apack.com/subdomain</a>
-					<a href class="text-ellipsis"><i class="fa fa-globe text-muted m-r-sm"></i> yourdomain.com</a>
+					<a href class="text-ellipsis"><i class="fa fa-globe text-muted m-r-sm"></i>{{userProfile.web}}</a>
 				</div>
 			</div>
-			<div class="box light lt">
+			<!--<div class="box light lt">
 							<div class="box-body">
 								<a href class="pull-left m-r">
 									<img src="../assets/images/a0.jpg" class="img-circle w-40">
@@ -72,7 +73,7 @@
 									<a href class="btn btn-sm btn-rounded white m-t-xs"><i class="fa fa-twitter m-t-xs"></i> Follow</a>
 								</div>
 							</div>
-					</div>
+					</div> -->
 			</div>
 			<!-- end profile -->
 	    <div class="col-sm-12 col-md-5">

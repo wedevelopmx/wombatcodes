@@ -1,6 +1,19 @@
 angular.module('geospatial')
 	.service('fakeData', function() {
 
+		/************ profile ************/
+		var profile = {
+			name: 'Jason Warren',
+			tech: 'Full stack developer',
+			web: 'www.wombatcodes.com',
+			contect: '@gmail.com',
+			repos: '2',
+			purchased: '2',
+			favorities: '1',
+			profile: 'Donec a dui nulla. Praesent sed sagittis felis. Donec vel efficitur risus, a finibus neque.',
+			location: 'London, UK'
+		};
+
     /************ my repos ***********/
     var myrepo1 = {
       name: 'badger project',
@@ -67,6 +80,9 @@ angular.module('geospatial')
       price: '3'
     };
 
+		this.returnFakeProfile = function () {
+      return profile;
+    }
 
     this.returnFakeMyRepos = function () {
       var myRepos = [myrepo1, myrepo2];

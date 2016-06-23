@@ -3,6 +3,7 @@ angular.module('geospatial')
 		/*
 		** declare and assign fake data to the scope variables
 		*/
+		$scope.userProfile = fakeData.returnFakeProfile();
 		$scope.myRepos = fakeData.returnFakeMyRepos();
 		$scope.boughtRepos = fakeData.returnFakeBoughtRepos();
 		$scope.favoriteRepos = fakeData.returnFakeFavoriteRepos();
