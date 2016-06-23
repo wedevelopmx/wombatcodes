@@ -1,5 +1,6 @@
 # Logs
 logs
+
 *.log
 
 # Runtime data
@@ -28,7 +29,8 @@ node_modules
 bower_components
 private/vendors
 public/libs
-dist
+dist/assets
+dist/libs
 db
 
 # Debug log from npm

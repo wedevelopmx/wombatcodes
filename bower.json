@@ -53,7 +53,7 @@
         "angular-echarts/dist/**",
         "html.sortable/dist/html.sortable.angular.min.js"
       ],
-      "dest": "libs/angular",
+      "dest": "public/libs/angular",
       "cwd": "private/vendors",
       "expand": true
     },
@@ -65,7 +65,7 @@
         "underscore/underscore-min.js",
         "dropzone/dist/min/**"
       ],
-      "dest": "libs/js",
+      "dest": "public/libs/js",
       "cwd": "private/vendors",
       "expand": true
     },
@@ -101,7 +101,7 @@
         "jquery-pjax/jquery.pjax.js",
         "twitter-bootstrap-wizard/jquery.bootstrap.wizard.js"
       ],
-      "dest": "libs/jquery",
+      "dest": "public/libs/jquery",
       "cwd": "private/vendors",
       "expand": true
     },
