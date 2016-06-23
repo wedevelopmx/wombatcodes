@@ -6,13 +6,13 @@ var github = require('octonode');
 // load all the things we need
 var LocalStrategy    = require('passport-local').Strategy;
 var GitHubStrategy = require('passport-github2').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 // load up the user model
 var models       = require('../models');
 
 // load the auth variables
 var configAuth = require('./auth');
-
 
 // used to serialize the user for the session
 passport.serializeUser(function(user, done) {
@@ -30,6 +30,48 @@ passport.deserializeUser(function(id, done) {
         });
 
 });
+
+// =========================================================================
+// GOOGLE ==================================================================
+// =========================================================================
+passport.use(new GoogleStrategy({
+    clientID        : configAuth.googleAuth.clientID,
+    clientSecret    : configAuth.googleAuth.clientSecret,
+    callbackURL     : configAuth.googleAuth.callbackURL,
+    },
+    function(accessToken, refreshToken, profile, done) {
+
+        // make the code asynchronous
+        // User.findOne won't fire until we have all our data back from Google
+        process.nextTick(function() {
+          var providerData = profile._json;
+            providerData.accessToken = accessToken;
+            providerData.refreshToken = refreshToken;
+
+          var user = {
+            displayName: profile.displayName,
+            email: profile.emails[0].value,
+            avatar: profile.photos[0].value,
+            provider: profile.provider,
+            providerid: profile.id,
+            token: accessToken
+          };
+
+          models.User
+            .findOrCreate({ where: { email: user.email }, defaults: user })
+            .spread(function(user, created) {
+              if(!created && user.token !== accessToken)
+                user.update({ token: accessToken}, {fields: ['token']})
+                  .then(function(updateUser) {
+                       console.log(updateUser);
+                  });
+
+              return done(null, user);
+            });
+      
+        });
+
+    }));
 
 // =========================================================================
 // GITHUB ==================================================================

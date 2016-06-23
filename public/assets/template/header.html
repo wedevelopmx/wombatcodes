@@ -2,37 +2,38 @@
 			<a data-toggle="collapse" data-target="#navbar-4" class="navbar-item pull-right hidden-md-up m-a-0 m-l">
 				<i class="material-icons">&#xe5d2;</i>
 			</a>
-			<div ui-include="'../views/blocks/navbar.brand.html'"></div>
+			<div ui-include="'assets/blocks/navbar.brand.html'"></div>
 
 			<!-- nabar right -->
 			<ul class="nav navbar-nav pull-right">
-				<li class="nav-item">
-					<a class="nav-link" ui-fullscreen>
-						<span><i class="fa fa-fw fa-arrows-v"></i></span>
+				<li class="nav-item " ng-hide="user">
+					<a class="nav-link md-btn md-flat m-b-sm w-xs text-primary" href="/auth/google">Login</a>
+				</li>
+				<li class="nav-item dropdown" ng-show="user">
+					<a class="nav-link" ui-fullscreen href="#/repository/import">
+						<i class="material-icons">&#xe145;</i>
 					</a>
 				</li>
-				<li class="nav-item dropdown">
-					<a href class="nav-link" data-toggle="dropdown">
-						<i class="material-icons">&#xe5c3;</i>
-						<span class="label up p-a-0 accent"></span>
-					</a>
-					<div ui-include="'../views/blocks/dropdown.grid.html'"></div>
-				</li>
-				<li class="nav-item dropdown">
-					<a href class="nav-link" data-toggle="dropdown">
-						<i class="material-icons">&#xe7f5;</i>
-						<span class="label up p-a-0 warn"></span>
-					</a>
-					<div ui-include="'../views/blocks/dropdown.notification.html'"></div>
-				</li>
-				<li class="nav-item dropdown">
+				<li class="nav-item dropdown" ng-show="user">
 					<a href class="nav-link dropdown-toggle clear" data-toggle="dropdown">
 						<span class="avatar w-32">
-							<img src="../assets/images/a2.jpg" alt="...">
+							<img ng-src="{{user.avatar}}" alt="...">
 							<i class="busy b-white right"></i>
 						</span>
 					</a>
-					<div ui-include="'../views/blocks/dropdown.user.html'"></div>
+					<div class="dropdown-menu pull-right dropdown-menu-scale">
+					  <a class="dropdown-item" href="#profile">
+					    <span>Profile</span>
+					  </a>
+					  <a class="dropdown-item" href="#settings">
+					    <span>Settings</span>
+					  </a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="#help">
+					    Need help?
+					  </a>
+					  <a class="dropdown-item" ng-click="logout()">Sign out</a>
+					</div>
 				</li>
 			</ul>
 			<!-- / navbar right -->

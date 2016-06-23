@@ -52,6 +52,10 @@ angular.module('geospatial', [
 			templateUrl: 'assets/template/dashboard.html',
 			controller: 'DashboardController'
 		},
+		'/repository/import': {
+			templateUrl: 'assets/template/repository/import.html',
+			controller: 'ImportController'
+		},
 		'/profile': {
 			templateUrl: 'assets/template/profile/profile.html',
 			controller: 'ProfileController'
