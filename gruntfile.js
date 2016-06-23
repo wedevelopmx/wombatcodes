@@ -12,7 +12,7 @@ module.exports = function(grunt) {
                 files: [
                     {expand: true, cwd: 'angular/', src: '**', dest: 'dist/angular/'},
                     {expand: true, cwd: 'html/', src: '**', dest: 'dist/html/'},
-                    {expand: true, cwd: 'assets/', src: ['**', '!**/scss/**'], dest: 'dist/assets/'},
+                    {expand: true, cwd: 'public/assets/', src: ['**', '!**/scss/**'], dest: 'dist/assets/'},
                     {expand: true, cwd: 'libs/', src: '**', dest: 'dist/libs/'},
                     {src: 'index.html', dest: 'dist/index.html'}
                 ]
@@ -37,16 +37,16 @@ module.exports = function(grunt) {
         },
         watch: {
             sass: {
-              files: ['assets/scss/*.scss'],
+              files: ['public/assets/scss/*.scss'],
               tasks: ['sass'],
             }
         },
         sass: {
             dist: {
                 files: [
-                    {'assets/styles/app.css': ['assets/scss/app.scss']},
-                    {'assets/styles/app.rtl.css': ['assets/scss/app.rtl.scss']},
-                    {'assets/bootstrap-rtl/dist/bootstrap-rtl.css': ['assets/bootstrap-rtl/scss/bootstrap-rtl.scss']}
+                    {'public/assets/styles/app.css': ['public/assets/scss/app.scss']},
+                    {'public/assets/styles/app.rtl.css': ['public/assets/scss/app.rtl.scss']},
+                    {'public/assets/bootstrap-rtl/dist/bootstrap-rtl.css': ['public/assets/bootstrap-rtl/scss/bootstrap-rtl.scss']}
                 ]
             }
         },

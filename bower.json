@@ -116,7 +116,7 @@
         "bootstrap/dist/css/**",
         "bootstrap/scss/**"
       ],
-      "dest": "assets",
+      "dest": "public/assets",
       "cwd": "private/vendors",
       "expand": true
     }
