@@ -1,2 +1,77 @@
-<h1>Repository Import</h1>
-<h2>Placeholder</h2>
+
+
+<!-- content -->
+<div id="content" class="app-content box-shadow-z0" role="main">
+
+  <div ui-view class="app-body" id="view">
+
+    <!-- ############ PAGE START-->
+    <div class="row-col">
+      <div class="col-sm w w-auto-xs light lt bg-auto">
+        <div class="padding pos-rlt">
+          <div class="hidden-xs-down m-t" id="inbox-menu">
+
+            <ul class="nav nav-active-primary nav-pills nav-sm" active-link>
+              <li class="nav-link active"><a href ng-click="toggleGitNav(1)">Github</a></li>
+              <li class="nav-link"><a href ng-click="toggleGitNav(2)">Bitbucket</a></li>
+            </ul>
+
+            <!--<div class="nav-active-primary" ng-click="$event.preventDefault()">
+              <div class="nav nav-pills nav-sm nav-stacked">
+                <a class="nav-link active home" ng-click="active='home'">
+                  github
+                </a>
+                <a class="nav-link home2" ng-click="active='home2'">
+                  bitbucket
+                </a>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div ui-view class="padding pos-rlt">
+          <div class="col-sm-12">
+  					<div class="box row-col" style="min-height:450px">
+  					    <div class="box-header b-b">
+  					      <strong>Repositories</strong>
+  					    </div>
+
+                <div class="box-body" ng-show="showGithub">
+                  <div class="col-xs-12" ng-hide="sync">
+                    <div class="btn-groups" append-source>
+                      <button type="button" class="btn btn-sm white center-block" data-placement="top-right" data-container="#content" data-duration="3" bs-alert="alert">
+                        Sync Github&nbsp;&nbsp;<i class="fa fa-refresh"></i>
+                      </button>
+                      <br>
+                      <p>
+                        <h4 class="text-center">Sync your github repositories with the application...</h4>
+                      </p>
+                    </div>
+                  </div>
+                  <div ng-show="sync">
+                    <div class="col-xs-4">
+                      <div class="box info dk">
+                        <div class="box-body">
+                          <a href class="pull-left m-r">
+                            <img src="../assets/images/a0.jpg" class="img-circle w-40">
+                          </a>
+                          <div class="clear">
+                            <a href>@Mike Mcalidek</a>
+                            <small class="block text-muted">2,415 followers / 225 tweets</small>
+                            <a href class="btn btn-sm btn-rounded btn-info m-t-xs"><i class="fa fa-twitter m-t-xs"></i> Follow</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  					  </div> <!-- end box -->
+  				</div>
+        </div>
+      </div> <!-- end col-sm -->
+    </div>
+    <!-- ############ PAGE END-->
+  </div>
+</div>
+<!-- / -->

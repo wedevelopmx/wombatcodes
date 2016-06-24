@@ -1,6 +1,9 @@
 angular.module('geospatial')
 	.service('fakeData', function() {
 
+
+
+
 		/************ profile ************/
 		var profile = {
 			name: 'Jason Warren',
