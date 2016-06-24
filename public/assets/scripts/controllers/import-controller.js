@@ -1,10 +1,14 @@
 angular.module('geospatial')
 
-	.controller('ImportController', ['$scope', '$http', '$location', '$routeParams',
-	 		function($scope, $http, $location, $routeParams) {
+	.controller('ImportController', ['$scope', '$http', '$location', '$routeParams', 'fakeData',
+	 		function($scope, $http, $location, $routeParams, fakeData) {
 
 		/************ profile ************/
 		$scope.sync = false;
+
+    /************ repos **************/
+    $scope.myRepos = fakeData.returnFakeMyRepos();
+    console.log($scope.myRepos);
 
 		/*
 		**  toggle

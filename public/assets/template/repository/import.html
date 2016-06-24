@@ -50,16 +50,16 @@
                     </div>
                   </div>
                   <div ng-show="sync">
-                    <div class="col-xs-4">
+                    <div class="col-xs-4" ng-repeat="repo in myRepos">
                       <div class="box info dk">
                         <div class="box-body">
                           <a href class="pull-left m-r">
                             <img src="../assets/images/a0.jpg" class="img-circle w-40">
                           </a>
                           <div class="clear">
-                            <a href>@Mike Mcalidek</a>
-                            <small class="block text-muted">2,415 followers / 225 tweets</small>
-                            <a href class="btn btn-sm btn-rounded btn-info m-t-xs"><i class="fa fa-twitter m-t-xs"></i> Follow</a>
+                            <a href>@{{repo.name}}</a>
+                            <small class="block text-muted">{{repo.content | limitTo: 45 }}{{repo.content.length > 45 ? ' [...]' : ''}}</small>
+                            <a href class="btn btn-sm btn-rounded btn-info m-t-xs"><i class="fa fa-github m-t-xs"></i> Import</a>
                           </div>
                         </div>
                       </div>
