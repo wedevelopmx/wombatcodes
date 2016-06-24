@@ -24,9 +24,19 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(id, done) {
     console.log('------------------- deserialize ---------------------' + id);
     models.User
-        .findOne({ where: {id: id} }).then(function(user) {
-          console.log(user.dataValues);
-            done(null, user.dataValues);
+        .findOne({
+          where: { id: id },
+          include: [{
+            attributes: ['name', 'token'],
+            model: models.Account,
+            as: 'accounts'
+          }]
+        })
+        .then(function(user) {
+          console.log(user.get({
+            plain: true
+          }));
+            done(null, user.get({ plain: true }));
         });
 
 });
@@ -50,25 +60,48 @@ passport.use(new GoogleStrategy({
 
           var user = {
             displayName: profile.displayName,
+            //company: { type: DataTypes.STRING, name: 'company' },
+            //location: { type: DataTypes.STRING, name: 'location' },
+            //bio: { type: DataTypes.TEXT, name: 'bio' },
             email: profile.emails[0].value,
-            avatar: profile.photos[0].value,
-            provider: profile.provider,
-            providerid: profile.id,
+            //website: { type: DataTypes.STRING, name: 'website' },
+            //twitter: { type: DataTypes.STRING, name: 'twitter' },
+            //github: { type: DataTypes.STRING, name: 'github' },
+            //linkedin:{ type: DataTypes.STRING, name: 'linkedin' },
+            avatar: profile.photos[0].value
+          };
+
+          var account = {
+            name: profile.provider,
+            providerId: profile.id,
+            // joinedAt: ,
+            // updatedAt: ,
+            // htmlUrl: ,
+            // reposUrl: ,
             token: accessToken
           };
 
           models.User
             .findOrCreate({ where: { email: user.email }, defaults: user })
-            .spread(function(user, created) {
-              if(!created && user.token !== accessToken)
-                user.update({ token: accessToken}, {fields: ['token']})
-                  .then(function(updateUser) {
-                       console.log(updateUser);
-                  });
+            .spread(function(user, userCreated) {
+
+              //Making the relationship
+              account.UserId = user.id;
+
+              models.Account
+                .findOrCreate({ where: { userId: user.id, name: account.name }, defaults: account })
+                .spread(function(account, accountCreated) {
+
+                  if(!accountCreated && account.token !== accessToken)
+                    account.update({ token: accessToken}, { fields: ['token'] })
+                      .then(function(updateUser) {
+
+                      });
+                });
 
               return done(null, user);
             });
-      
+
         });
 
     }));
@@ -82,44 +115,61 @@ passport.use(new GitHubStrategy({
     callbackURL     : configAuth.githubAuth.callbackURL,
     },
     function(accessToken, refreshToken, profile, done) {
-
       var client = github.client(accessToken);
 
-      var user = { 
-        displayName: profile.displayName,
+      var githubUser = {
         company: profile._json.company || '',
-        blog: profile._json.blog || '',
         location: profile._json.location || '',
-        email: profile._json.email || '',
         bio: profile._json.bio || '',
-        avatar: profile._json.avatar_url || '',
-        vendor: profile.provider,
-        vendorJoinedAt: profile._json.created_at || '',
-        vendorUpdatedAt: profile._json.updated_at || '',
-        vendorHtmlUrl: profile._json.html_url || '',
-        vendorReposUrl: profile._json.repos_url  || '',
+        github: profile._json.html_url || ''
+      };
+
+      var account = {
+        name: profile.provider,
+        providerId: profile.id,
+        joinedAt: profile._json.created_at || '',
+        updatedAt: profile._json.updated_at || '',
+        htmlUrl: profile._json.html_url || '',
+        reposUrl: profile._json.repos_url  || '',
         token: accessToken
-      }
+      };
 
-      client.get('/user/emails', {}, function (err, status, data, headers) {
-        for(i in data) {
-          if(data[i].primary !== undefined && data[i].primary) {
-            user.email = data[i].email;
-            console.log(user);
-
-            models.User
-              .findOrCreate({ where: { email: user.email }, defaults: user })
-              .spread(function(user, created) {
-                if(!created && user.token !== accessToken)
-                  user.update({ token: accessToken}, {fields: ['token']})
-                    .then(function(updateUser) {
-                         console.log(updateUser);
-                    });
-
-                return done(null, user);
-              });
-          }
+      var orClause = [];
+      client.get('/user/emails', {}, function (err, status, email, headers) {
+        for(i in email) {
+          orClause.push({ email: email[i].email });
         }
+
+        //Finding the user with the github email reference
+        models.User
+          .findOne({ where: { $or: orClause } })
+          .then(function(user) {
+
+            //Making the relationship
+            account.UserId = user.id;
+
+            //Find or Create Account
+            models.Account
+            .findOrCreate({ where: { userId: user.id, name: account.name }, defaults: account })
+            .spread(function(account, created) {
+
+              //Update user information
+              if(created) {
+                user.update(githubUser, { fields: ['company', 'location', 'bio', 'github'] }).then(function(user){
+                  console.log('Updated user');
+                });
+              } else {
+                user.update({ token: accessToken}, {fields: ['token']}).then(function(user){
+                  console.log('Updated user');
+                });
+              }
+            });
+
+            return done(null, user);
+          });
+
+          //TODO: Validate what happend when user github account does not include google's email
+
       });
 
     }));

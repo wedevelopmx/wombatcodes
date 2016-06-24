@@ -4,20 +4,18 @@ module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     displayName: { type: DataTypes.STRING, name: 'display_name' },
     company: { type: DataTypes.STRING, name: 'company' },
-    blog: { type: DataTypes.STRING, name: 'blog' },
     location: { type: DataTypes.STRING, name: 'location' },
-    email: { type: DataTypes.STRING, name: 'email' },
     bio: { type: DataTypes.TEXT, name: 'bio' },
-    avatar: { type: DataTypes.STRING, name: 'avatar' },
-    vendor: { type: DataTypes.STRING, name: 'vendor' },
-    vendorJoinedAt: { type: DataTypes.DATE, name: 'vendor_joined_at'},
-    vendorUpdatedAt: { type: DataTypes.DATE, name: 'vendor_updated_at'},
-    vendorHtmlUrl: { type: DataTypes.STRING, name: 'vendor_html_url' },
-    vendorReposUrl: { type: DataTypes.STRING, name: 'vendor_repos_url' },
-    token: { type: DataTypes.STRING, name: 'token' }
+    email: { type: DataTypes.STRING, name: 'email' },
+    website: { type: DataTypes.STRING, name: 'website' },
+    twitter: { type: DataTypes.STRING, name: 'twitter' },
+    github: { type: DataTypes.STRING, name: 'github' },
+    linkedin:{ type: DataTypes.STRING, name: 'linkedin' },
+    avatar: { type: DataTypes.STRING, name: 'avatar' }
   }, {
     classMethods: {
       associate: function(models) {
+        User.hasMany(models.Account, {as: 'accounts'});
         User.hasMany(models.Project);
       }
     }
@@ -26,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
   return User;
 };
 
-// { 
+// {
 //   displayName: 'Cristian Colorado',
 //   company: 'WeDevelop',
 //   blog: 'http://cristiancolorado.com',
@@ -38,6 +36,6 @@ module.exports = function(sequelize, DataTypes) {
 //   vendorJoinedAt: '2012-03-13T02:43:52Z',
 //   vendorUpdatedAt: '2016-05-25T17:35:12Z',
 //   vendorHtmlUrl: 'https://github.com/ccoloradoc',
-//   vendorReposUrl: 'https://api.github.com/users/ccoloradoc/repos' 
+//   vendorReposUrl: 'https://api.github.com/users/ccoloradoc/repos'
 //   token: ''
 //  }
