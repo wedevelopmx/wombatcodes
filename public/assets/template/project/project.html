@@ -1,2 +1,18 @@
 <h1>Project Placeholder</h1>
 <h2>ProjectId: {{id}}</h2>
+<ul>
+  <li><span>Title: </span><span ng-bind="project.title"></span></li>
+  <li><span>Description: </span><span ng-bind="project.description"></span></li>
+  <li><span>Vendor: </span><span ng-bind="project.vendor"></span></li>
+  <li><span>Vendor Id:</span><span ng-bind="project.vendorId"></span></li>
+  <li><span>Clone: </span><span ng-bind="project.clone"></span></li>
+  <li><span>Languages: </span>
+    <ul>
+      <li ng-repeat="language in project.languages">
+        <span ng-bind="language.name"></span> -
+        <span ng-bind="language.lines"></span>
+      </li>
+    </ul>
+  </li>
+
+</ul>

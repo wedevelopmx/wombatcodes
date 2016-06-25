@@ -50,7 +50,7 @@ router.post('/', function(req, res, next) {
         console.log(repository);
         var project = {
           title: repository.name,
-          description: repository.name,
+          description: repository.description,
           clone: repository.clone_url,
           vendor: 'github',
           vendorId: repository.id,
@@ -88,6 +88,20 @@ router.post('/', function(req, res, next) {
           });
     });
   }
+});
+
+router.get('/:id', function(req, res, next) {
+  models.Project.findOne({
+    where: { id: req.params.id },
+    include: [{
+      attributes: ['name', 'lines'],
+      model: models.Language,
+      as: 'languages'
+    }]
+  })
+  .then(function(projects) {
+    res.json(projects);
+  });
 });
 
 module.exports = router;

@@ -60,7 +60,6 @@ angular.module('geospatial', [
 			templateUrl: 'assets/template/project/project.html',
 			controller: 'ProjectController'
 		},
-
 		'/profile/import/:user/:repo': {
 			templateUrl: 'assets/template/repository/repo-content.html',
 			controller: 'GithubImportController'
