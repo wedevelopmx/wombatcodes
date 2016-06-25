@@ -8,4 +8,9 @@ router.get('/', function(req, res, next) {
   		title: 'WombatCodes'});
 });
 
+router.get('/edit', function(req, res, next) {
+	res.render('edit', {
+  		title: 'WombatCodes'});
+});
+
 module.exports = router;
