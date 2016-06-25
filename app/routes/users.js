@@ -11,23 +11,25 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/repos', function(req, res, next) {
-  console.log(req.user.token);
-  var client = github.client(req.user.token);
-
-  client.get('/user/repos', { affiliation: 'owner' }, function (err, status, data, headers) {
-
-    res.json(data);
-  });
-
+  console.log(req.user);
+  for(i in req.user.accounts) {
+    var account = req.user.accounts[i];
+    if(account.name == 'github'){
+      var client = github.client(account.token);
+      client.get('/user/repos', { affiliation: 'owner' }, function (err, status, data, headers) {
+        res.json(data);
+      });
+    }
+  }
 });
 
 router.get('/import/:owner/:repo', function(req, res, next) {
   var client = github.client(req.user.token);
 
-  client.get('/repos/' + req.params.owner + '/' + req.params.repo, { }, 
+  client.get('/repos/' + req.params.owner + '/' + req.params.repo, { },
     function (err, status, data, headers) {
       console.log(data.languages_url);
-      client.get(data.languages_url, { }, 
+      client.get(data.languages_url, { },
         function (err, status, dataLang, headers) {
           data.languages = dataLang;
           res.json(data);
@@ -39,7 +41,7 @@ router.get('/import/:owner/:repo', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
 	console.log(req.body);
-		
+
 	models.User
       .findOrCreate({where: { email: req.body.email}, defaults: req.body})
       .spread(function(user, created) {

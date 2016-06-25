@@ -1,14 +1,7 @@
 angular.module('geospatial')
-
-	.controller('ImportController', ['$scope', '$http', '$location', '$routeParams', 'fakeData',
-	 		function($scope, $http, $location, $routeParams, fakeData) {
-
-		/************ profile ************/
-		$scope.sync = false;
-
-    /************ repos **************/
-    $scope.myRepos = fakeData.returnFakeMyRepos();
-    console.log($scope.myRepos);
+	.controller('ImportController', ['$scope', '$http', '$location',
+	 		function($scope, $http, $location) {
+		console.log($scope.user);
 
 		/*
 		**  toggle
@@ -27,5 +20,24 @@ angular.module('geospatial')
       }
 		}
 
+		/************ repos **************/
+		if($scope.user.sync.github != undefined && $scope.showGithub) {
+			$http.get('/user/repos').then(function(res) {
+					console.log(res.data);
+					$scope.repos = res.data;
+			});
+		}
+
+		$scope.saveRepository = function(repo){
+			var project = {
+				owner: repo.owner.login,
+				repository: repo.name
+			};
+
+			$http.post('/project', project, function(res) {
+				console.log(res);
+				$location.url('/project/' + res.data.id);
+			});
+		};
 
 	}]);

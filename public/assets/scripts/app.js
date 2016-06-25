@@ -56,6 +56,15 @@ angular.module('geospatial', [
 			templateUrl: 'assets/template/repository/import.html',
 			controller: 'ImportController'
 		},
+		'/project/:id': {
+			templateUrl: 'assets/template/project/project.html',
+			controller: 'ProjectController'
+		},
+
+		'/profile/import/:user/:repo': {
+			templateUrl: 'assets/template/repository/repo-content.html',
+			controller: 'GithubImportController'
+		},
 		'/profile': {
 			templateUrl: 'assets/template/profile/profile.html',
 			controller: 'ProfileController'

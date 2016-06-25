@@ -5,36 +5,36 @@ var models  = require('../models');
 //Authentication API routes
 module.exports = function(passport) {
 
-	router.get('/google', 
+	router.get('/google',
 		passport.authenticate('google', { scope : ['profile', 'email'] }));
 
 	// the callback after google has authenticated the user
 	router.get('/google/callback',
 		passport.authenticate('google', {
                 successRedirect : '/',
-                failureRedirect : '/error'
+                failureRedirect : '/#loginError'
         }));
 
 	//Github
 	router.get('/github',
 	  passport.authenticate('github', { scope: [ 'user', 'repo' ] }));
 
-	router.get('/github/callback', 
+	router.get('/github/callback',
 	  passport.authenticate('github', {
-            successRedirect : '/',
-            failureRedirect : '/error'
+            successRedirect : '/#/repository/import',
+            failureRedirect : '/#loginError'
         }));
 
-	router.get('/logout', function(req, res){ 
-		req.logout(); 
+	router.get('/logout', function(req, res){
+		req.logout();
 		res.send(200);
 	});
 
-	// route to test if the user is logged in or not 
-	router.get('/loggedin', function(req, res) { 
+	// route to test if the user is logged in or not
+	router.get('/loggedin', function(req, res) {
 		if(req.isAuthenticated())
 			req.user.user_permissions = ['admin'];
-		res.json(req.isAuthenticated() ? req.user : null); 
+		res.json(req.isAuthenticated() ? req.user : null);
 	});
 
 	return router;

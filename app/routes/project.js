@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var models  = require('../models');
 var Sequelize = require('sequelize');
+var github = require('octonode');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -29,7 +30,7 @@ router.get('/', function(req, res, next) {
       attributes: ['name', 'lines'],
       model: models.Language,
       as: 'languages'
-    }, user]  
+    }, user]
   })
   .then(function(users) {
 		res.json(users);
@@ -37,34 +38,56 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  var data = req.body;
-  data.UserId = req.user.id;
+  var project = req.body;
+  var sync = req.user.sync;
 
-  models.Project.create(req.body)
-    .then(function(project) {
-      //Saving Categories
-      var categories = [];
-      data.categories.forEach(function(category) {
-        console.log(' - ' + category.name);
-        categories.push({ProjectId: project.id, CategoryId: category.id});
-      });
+  //Creating Project Based on Github repository
+  if(sync.github != undefined){
+    var client = github.client(sync.github.token);
 
-      models.ProjectCategory.bulkCreate(categories).then(function() {
-        console.log('Categories created');
-      });
-      
-      //Saving Languages
-      data.languages.forEach(function(obj) {
-        console.log(' - ' + obj.name);
-        obj.ProjectId = project.id;
-      });
+    client.get('/repos/' + project.owner + '/' + project.repository, { },
+      function (err, status, repository, headers) {
+        console.log(repository);
+        var project = {
+          title: repository.name,
+          description: repository.name,
+          clone: repository.clone_url,
+          vendor: 'github',
+          vendorId: repository.id,
+          UserId: req.user.id
+        };
 
-      models.Language.bulkCreate(data.languages).then(function() {
-        console.log('Languages created');
-      });
-      
-      res.json(project);
+        console.log(project);
+
+        models.Project.create(project)
+          .then(function(project) {
+
+            client.get(repository.languages_url, { },
+              function (err, status, repoLanguages, headers) {
+                var languages = [];
+
+                console.log(repoLanguages);
+
+                //Saving Languages
+                for (language in repoLanguages) {
+                  languages.push({
+                      name: language,
+                      lines: repoLanguages[language],
+                      ProjectId: project.id
+                  });
+                }
+
+                console.log(languages);
+
+                models.Language.bulkCreate(languages).then(function() {
+                  console.log('Languages created');
+                });
+
+                res.json(project);
+              });
+          });
     });
+  }
 });
 
 module.exports = router;

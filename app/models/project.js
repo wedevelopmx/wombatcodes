@@ -8,7 +8,9 @@ module.exports = function(sequelize, DataTypes) {
     price: DataTypes.FLOAT,
     rate: DataTypes.FLOAT,
     type: DataTypes.STRING,
-    githubId: DataTypes.INTEGER
+    vendor: DataTypes.STRING,
+    vendorId: DataTypes.INTEGER,
+    clone: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {

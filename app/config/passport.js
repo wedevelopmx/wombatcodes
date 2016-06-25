@@ -33,10 +33,14 @@ passport.deserializeUser(function(id, done) {
           }]
         })
         .then(function(user) {
-          console.log(user.get({
-            plain: true
-          }));
-            done(null, user.get({ plain: true }));
+          user = user.get({ plain: true });
+          user.sync = {};
+          for(i in user.accounts) {
+            var account = user.accounts[i];
+            user.sync[account.name] = account;
+          }
+
+          done(null, user);
         });
 
 });

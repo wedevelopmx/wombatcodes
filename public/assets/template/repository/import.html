@@ -15,17 +15,6 @@
               <li class="nav-link active"><a href ng-click="toggleGitNav(1)">Github</a></li>
               <li class="nav-link"><a href ng-click="toggleGitNav(2)">Bitbucket</a></li>
             </ul>
-
-            <!--<div class="nav-active-primary" ng-click="$event.preventDefault()">
-              <div class="nav nav-pills nav-sm nav-stacked">
-                <a class="nav-link active home" ng-click="active='home'">
-                  github
-                </a>
-                <a class="nav-link home2" ng-click="active='home2'">
-                  bitbucket
-                </a>
-              </div>
-            </div> -->
           </div>
         </div>
       </div>
@@ -38,7 +27,8 @@
   					    </div>
 
                 <div class="box-body" ng-show="showGithub">
-                  <div class="col-xs-12" ng-hide="sync">
+                  <!-- Sync Account-->
+                  <div class="col-xs-12" ng-hide="user.sync.github != undefined">
                     <div class="btn-groups" append-source>
                       <a href="/auth/github/callback" class="btn btn-sm white center-block" data-placement="top-right" data-container="#content" data-duration="3" bs-alert="alert">
                         Sync Github&nbsp;&nbsp;<i class="fa fa-refresh"></i>
@@ -49,17 +39,18 @@
                       </p>
                     </div>
                   </div>
-                  <div ng-show="sync">
-                    <div class="col-xs-4" ng-repeat="repo in myRepos">
+                  <!-- Repositories -->
+                  <div ng-show="user.sync.github != undefined">
+                    <div class="col-xs-4" ng-repeat="repo in repos">
                       <div class="box info dk">
                         <div class="box-body">
                           <a href class="pull-left m-r">
-                            <img src="../assets/images/a0.jpg" class="img-circle w-40">
+                            <img ng-src="{{repo.owner.avatar_url}}" class="img-circle w-40">
                           </a>
                           <div class="clear">
                             <a href>@{{repo.name}}</a>
-                            <small class="block text-muted">{{repo.content | limitTo: 45 }}{{repo.content.length > 45 ? ' [...]' : ''}}</small>
-                            <a href class="btn btn-sm btn-rounded btn-info m-t-xs"><i class="fa fa-github m-t-xs"></i> Import</a>
+                            <small class="block text-muted">{{repo.description | limitTo: 45 }}{{repo.description.length > 45 ? ' [...]' : ''}}</small>
+                            <a ng-click="saveRepository(repo)" class="btn btn-sm btn-rounded btn-info m-t-xs"><i class="fa fa-github m-t-xs"></i> Import</a>
                           </div>
                         </div>
                       </div>
