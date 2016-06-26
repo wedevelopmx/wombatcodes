@@ -1,4 +1,4 @@
-/* 
+/*
 
 */
 html {
@@ -356,6 +356,9 @@ sup {
   .dropdown-menu.pull-none-xs {
     left: 0; } }
 
+.ta-scroll-window  {
+    min-height: 500px !important;
+}
 .form-control {
   border-color: rgba(120, 130, 140, 0.2);
   border-radius: 0;
