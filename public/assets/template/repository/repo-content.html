@@ -1,0 +1,87 @@
+<div class="padding">
+  <div class="container">
+	  <!-- row -->
+    <div class="row">
+      <div class="col-md-9">
+        <!-- html box -->
+        <form class="form-horizontal clearfix" action="javascript:;">
+          <div text-angular ng-model="replyBox"
+            class="ta-root focussed"
+            ta-toolbar="[['h1', 'h2', 'h3', 'h4'], ['bold', 'italics', 'underline'], ['insertImage', 'insertLink', 'insertVideo', 'html'], ['justifyLeft', 'justifyCenter', 'justifyRight']]">
+              <br><p><h3>Edit Web Page content</h3></p>
+          </div>
+        </form> <!-- end html box -->
+      </div>
+      <div class="col-md-3">
+        <!-- box -->
+        <div class="box">
+          <div class="box-header b-b">
+            <p>
+              <button class="btn info btn-block"><i class="fa fa-file-text-o pull-left"></i>save web page</button>
+            </p>
+            <!--<h3>Purchased Repositories <span class="label success">2</span>    <button class="btn btn-sm white" ng-click="toggleBoughtRepo()"><i class="fa fa-caret-down"></i></button></h3>-->
+          </div>
+          <div>
+            <ul class="list">
+              <li class="list-item" ng-repeat="repo in boughtRepos">
+                <div class="list-body">
+
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div> <!-- end box -->
+
+        <!-- box -->
+        <div class="box">
+          <div class="box-header b-b">
+            <h5>Charts</h5>
+            <div class="form-group row">
+              <select required class="form-control c-select m-y">
+                  <option value="">- - - chart - - -</option>
+                  <option value="foo">Doughnut</option>
+                  <option value="bar">Line</option>
+              </select>
+              <!-- char picture -->
+              <div ng-show="chartPicture">
+                <div class="row-cell">
+                  <div class="inline">
+                    <div ui-jp="easyPieChart" class="easyPieChart" ui-refresh="blue" data-redraw='true' data-percent="75" ui-options="{
+                        lineWidth: 5,
+                        trackColor: 'transparent',
+                        barColor: '{{app.setting.color.warn}}',
+                        scaleColor: 'transparent',
+                        size: 75,
+                        scaleLength: 0
+                      }">
+                      <div>
+                        75%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end chart picture -->
+            </div>
+          </div>
+          <div>
+            <ul class="list">
+              <li class="list-item">
+                <div class="list-body">
+                  <!--<div class="form-group row">
+                    <select required class="form-control c-select m-y">
+                        <option value="">Please choose</option>
+                        <option value="foo">Foo</option>
+                        <option value="bar">Bar</option>
+                    </select>
+                  </div>-->
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div> <!-- end box -->
+
+      </div>
+    </div> <!-- end row -->
+  </div>
+</div>

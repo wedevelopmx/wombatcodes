@@ -1,1 +1,114 @@
-<h1>Edit</h1>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title><%= title %></title>
+    <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="Flatkit">
+    <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" sizes="196x196" href="assets/images/logo.png">
+
+    <!-- style -->
+    <link rel="stylesheet" href="assets/animate.css/animate.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/glyphicons/glyphicons.css" type="text/css" />
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/material-design-icons/material-design-icons.css" type="text/css" />
+
+    <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+    <!-- build:css assets/styles/app.min.css -->
+    <link rel="stylesheet" href="assets/styles/app.css" type="text/css" />
+    <!-- endbuild -->
+    <link rel="stylesheet" href="assets/styles/font.css" type="text/css" />
+
+    <!-- <link rel='stylesheet' href='/css/style.css' />
+    <link rel='stylesheet' href='/css/main.css' />
+    <link href="vendor/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="vendor/textAngular/dist/textAngular.css" rel="stylesheet"> -->
+
+    <!--<link href="vendor/openlayers3/build/ol.css" rel="stylesheet" />-->
+    <!--<link href="vendor/angular-openlayers-directive/dist/angular-openlayers-directive.css" rel="stylesheet">-->
+
+  </head>
+  <body ng-app="geospatial" ng-controller="MainController as mainCtrl">
+
+    <!-- content -->
+    <div id="content" class="app-content box-shadow-z0" role="main">
+      <div ng-view class="app-body" id="view"></div>
+    </div>
+
+
+    <!-- build:js scripts/app.angular.js -->
+    <!-- jQuery -->
+      <script src="libs/jquery/jquery/dist/jquery.js"></script>
+    <!-- Bootstrap -->
+      <script src="libs/jquery/tether/dist/js/tether.min.js"></script>
+      <script src="libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+      <script src="libs/jquery/PACE/pace.min.js"></script>
+    <!-- Angular -->
+      <script src="libs/angular/angular/angular.js"></script>
+      <script src="libs/angular/angular-animate/angular-animate.js"></script>
+      <script src="libs/angular/angular-route/angular-route.js"></script>
+      <script src="libs/angular/angular-resource/angular-resource.js"></script>
+      <script src="libs/angular/angular-sanitize/angular-sanitize.js"></script>
+      <script src="libs/angular/angular-touch/angular-touch.js"></script>
+
+      <script type="text/javascript" src="libs/angular/textAngular/dist/textAngular-rangy.min.js"></script>
+      <script type="text/javascript" src="libs/angular/textAngular/dist/textAngular-sanitize.min.js"></script>
+      <script type="text/javascript" src="libs/angular/textAngular/dist/textAngular.min.js"></script>
+      <script type="text/javascript" src="libs/angular/jquery.easy-pie-chart/dist/angular.easypiechart.js"></script>
+      <!--<script type="text/javascript" src="libs/angular/jquery.easy-pie-chart/dist/jquery.easypiechart.fill.js"></script>-->
+
+      <script type="text/javascript" src="libs/jquery/flot/jquery.flot.js"></script>
+      <script type="text/javascript" src="libs/jquery/flot/jquery.flot.pie.js"></script>
+
+
+      <!--<script type="text/javascript" src="libs/jquery/flot.tooltip/js/jquery.flot.tooltip.js"></script>-->
+
+      <!-- router -->
+      <script src="libs/angular/angular-ui-router/release/angular-ui-router.js"></script>
+      <!-- storage -->
+      <script src="libs/angular/ngstorage/ngStorage.js"></script>
+      <!-- utils -->
+      <script src="libs/angular/angular-ui-utils/ui-utils.js"></script>
+      <!-- lazyload -->
+      <script src="libs/angular/oclazyload/dist/ocLazyLoad.js"></script>
+
+
+
+    <!--<script type="text/javascript" src="vendor/braintree-web/dist/braintree.js"></script>-->
+    <!--<script type="text/javascript" src="vendor/braintree-angular/dist/braintree-angular.js"></script>-->
+
+
+    <script type="text/javascript" src="assets/scripts/app.js"></script>
+    <!-- Controllers -->
+    <script type="text/javascript" src="assets/scripts/controllers/main-controller.js"></script>
+    <script type="text/javascript" src="assets/scripts/controllers/dashboard-controller.js"></script>
+    <script type="text/javascript" src="assets/scripts/controllers/profile-controller.js"></script>
+    <script type="text/javascript" src="assets/scripts/controllers/github-import-controller.js"></script>
+    <script type="text/javascript" src="assets/scripts/controllers/repo-content-controller.js"></script>
+    <script type="text/javascript" src="assets/scripts/controllers/search-main-controller.js"></script>
+    <script type="text/javascript" src="assets/scripts/controllers/payment-controller.js"></script>
+    <script type="text/javascript" src="assets/scripts/controllers/import-controller.js"></script>
+    <script type="text/javascript" src="assets/scripts/controllers/project-controller.js"></script>
+    <!-- Services -->
+    <script type="text/javascript" src="assets/scripts/services/auth-service.js"></script>
+    <script type="text/javascript" src="assets/scripts/services/project-service.js"></script>
+    <script type="text/javascript" src="assets/scripts/services/fakeData-service.js"></script>
+    <script type="text/javascript" src="assets/scripts/services/ui-load.js"></script>
+    <!-- Directives -->
+    <script type="text/javascript" src="assets/scripts/directives/config.lazyload.js"></script>
+    <script type="text/javascript" src="assets/scripts/directives/enter.js"></script>
+    <script type="text/javascript" src="assets/scripts/directives/nav-directive.js"></script>
+    <script type="text/javascript" src="assets/scripts/directives/ui-jp.js"></script>
+
+  </body>
+</html>

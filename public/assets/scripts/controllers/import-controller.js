@@ -31,13 +31,17 @@ angular.module('geospatial')
 		$scope.saveRepository = function(repo){
 			var project = {
 				owner: repo.owner.login,
-				repository: repo.name
+				repository: repo.name,
+				id: '12345'
 			};
 
-			$http.post('/project', project, function(res) {
+			/*$http.post('/project', project, function(res) {
 				console.log(res);
 				$location.url('/project/' + res.data.id);
-			});
+			});*/
+
+			window.location.href = '/edit#/profile/import/' + project.owner + '/' + project.repository;
+		//	$location.url('/profile/import/' + project.owner + '/' + project.repository);
 		};
 
 	}]);
