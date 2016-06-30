@@ -1,0 +1,119 @@
+<div class="item">
+    <div class="item-bg">
+      <img ng-src="{{user.avatar}}" class="blur opacity-3">
+    </div>
+    <div class="p-a-md">
+      <div class="row m-t">
+        <div class="col-sm-7">
+          <a href class="pull-left m-r-md">
+            <span class="avatar w-96">
+              <img ng-src="{{user.avatar}}">
+              <i class="on b-white"></i>
+            </span>
+          </a>
+          <div class="clear m-b">
+            <h3 class="m-a-0 m-b-xs">{{user.displayName}}</h3>
+            <p class="text-muted"><span class="m-r">{{user.tech}}</span></p>
+            <div class="block clearfix m-b">
+              <a href="" class="btn btn-icon btn-social rounded white btn-sm">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-facebook indigo"></i>
+              </a>
+              <a href="" class="btn btn-icon btn-social rounded white btn-sm">
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-twitter light-blue"></i>
+              </a>
+              <a href="" class="btn btn-icon btn-social rounded white btn-sm">
+                <i class="fa fa-google-plus"></i>
+                <i class="fa fa-google-plus red"></i>
+              </a>
+              <a href="" class="btn btn-icon btn-social rounded white btn-sm">
+                <i class="fa fa-linkedin"></i>
+                <i class="fa fa-linkedin cyan-600"></i>
+              </a>
+            </div>
+            <!--<a href class="btn btn-sm {{app.setting.theme.warn}} btn-rounded m-b">Follow</a>-->
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <p class="text-md profile-status">
+            <a href alt="edit" data-toggle="collapse" data-target="#editContact"><i class="fa fa-fw fa-pencil"></i></a> Contact:
+          </p>
+          <p>{{user.contact}}</p>
+          <!--<button class="btn btn-sm white" data-toggle="collapse" data-target="#editor">Edit</button>-->
+          <div class="collapse m-t-sm" id="editContact">
+            <textarea class="form-control no-border" rows="2" ng-model="user.contact" placeholder="edit contact..."></textarea>
+            <button class="btn btn-sm white" data-toggle="collapse" data-target="#editContact">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dker p-x">
+    <div class="row">
+      <div class="col-sm-6 col-sm-push-6">
+        <div class="p-y text-center text-sm-right">
+          <a href class="inline p-x text-center">
+            <span class="h4 block m-a-0">{{user.repos}}</span>
+            <small class="text-xs text-muted">Repositories</small>
+          </a>
+          <a href class="inline p-x b-l b-r text-center">
+            <span class="h4 block m-a-0">{{user.purchased}}</span>
+            <small class="text-xs text-muted">Purchased</small>
+          </a>
+          <a href class="inline p-x text-center">
+            <span class="h4 block m-a-0">{{user.favorities}}</span>
+            <small class="text-xs text-muted">Favorities</small>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-sm-pull-6">
+        <div class="p-y-md clearfix nav-active-{{app.setting.theme.primary}}">
+          <ul class="nav nav-pills nav-sm">
+            <li class="nav-item active">
+              <a class="nav-link" href data-toggle="tab" data-target="#tab_1">Summary</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href data-toggle="tab" data-target="#tab_2">Domain</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="padding">
+    <div class="row">
+      <div class="col-sm-8 col-lg-9">
+        <div class="tab-content">
+          <div class="tab-pane p-v-sm active" id="tab_1">
+            <p class="text-md profile-status">
+              <a href alt="edit" data-toggle="collapse" data-target="#editSummary"><i class="fa fa-fw fa-pencil"></i></a> Summary:
+            </p>
+            <p>{{user.summary}}</p>
+            <div class="box collapse" id="editSummary">
+    	            <form>
+    	              <textarea ng-model="user.summary" class="form-control no-border" rows="3" placeholder="Edit yor summary..."></textarea>
+    	            </form>
+    	            <div class="box-footer clearfix">
+    	              <button class="btn btn-info pull-right btn-sm">Save</button>
+    	            </div>
+    	      </div>
+          </div>
+          <div class="tab-pane p-v-sm" id="tab_2">
+            <p class="text-md profile-status">
+              <a href alt="edit" data-toggle="collapse" data-target="#editDomain"><i class="fa fa-fw fa-pencil"></i></a> Domains:
+            </p>
+            <p>{{user.web}}</p>
+            <div class="box collapse" id="editDomain">
+    	            <form>
+    	              <textarea ng-model="user.web" class="form-control no-border" rows="3" placeholder="Edit yor domains..."></textarea>
+    	            </form>
+    	            <div class="box-footer clearfix">
+    	              <button class="btn btn-info pull-right btn-sm">Save</button>
+    	            </div>
+    	      </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

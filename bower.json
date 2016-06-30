@@ -42,9 +42,6 @@
         "angular-ui-utils/ui-utils.js",
         "angular-ui-calendar/src/calendar.js",
         "angular-xeditable/dist/**",
-        "textAngular/dist/textAngular-rangy.min.js",
-        "textAngular/dist/textAngular-sanitize.min.js",
-        "textAngular/dist/textAngular.min.js",
         "jquery.easy-pie-chart/dist/angular.easypiechart.js",
         "ngImgCrop/compile/minified/**",
         "ngstorage/ngStorage.js",
@@ -54,7 +51,7 @@
         "html.sortable/dist/html.sortable.angular.min.js"
       ],
       "dest": "public/libs/angular",
-      "cwd": "private/vendors",
+      "cwd": "public/vendor",
       "expand": true
     },
     {
@@ -66,7 +63,7 @@
         "dropzone/dist/min/**"
       ],
       "dest": "public/libs/js",
-      "cwd": "private/vendors",
+      "cwd": "public/vendor",
       "expand": true
     },
     {
@@ -91,6 +88,7 @@
         "flot.orderbars/js/jquery.flot.orderBars.js",
         "fullcalendar/dist/fullcalendar.min.js",
         "summernote/dist/**",
+        "screenfull/dist/**",
         "waves/dist/**",
         "eonasdan-bootstrap-datetimepicker/build/**",
         "select2/dist/**",
@@ -102,10 +100,9 @@
         "twitter-bootstrap-wizard/jquery.bootstrap.wizard.js"
       ],
       "dest": "public/libs/jquery",
-      "cwd": "private/vendors",
+      "cwd": "public/vendor",
       "expand": true
-    },
-    {
+    }, {
       "src": [
         "animate.css/animate.min.css",
         "font-awesome/css/**",
@@ -117,7 +114,28 @@
         "bootstrap/scss/**"
       ],
       "dest": "public/assets",
-      "cwd": "private/vendors",
+      "cwd": "public/vendor",
+      "expand": true
+    }, {
+      "src": [
+        "material-design-icons/*.*",
+        "bootstrap-rtl/**",
+        "fonts/**",
+        "glyphicons/**",
+        "scss/**",
+        "styles/**"
+      ],
+      "dest": "public/assets",
+      "cwd": "public/vendor/flatkit/assets",
+      "expand": true
+    }, {
+      "src": [
+        "directives/**",
+        "filters/**",
+        "services/**"
+      ],
+      "dest": "public/angular",
+      "cwd": "public/vendor/flatkit/angular/scripts",
       "expand": true
     }
   ],
@@ -183,6 +201,8 @@
     "underscore": "~1.8.3",
     "venturocket-angular-slider": "~0.3.2",
     "waves": "~0.7.2",
-    "textAngular": "^1.5.1"
+    "textAngular": "^1.5.1",
+    "angular-chart.js": "^0.10.2",
+    "flatkit": "git@bitbucket.org:wedevelopmx/flatkit.git"
   }
 }

@@ -1,0 +1,102 @@
+<div class="padding">
+  <div class="container">
+	  <!-- row -->
+    <div class="row">
+      <div class="col-md-9">
+        <!-- html box -->
+        <form class="form-horizontal clearfix" action="javascript:;">
+          <div text-angular
+            class="ta-root focussed" ng-model="websiteContent"
+            ta-toolbar="[['h1', 'h2', 'h3', 'h4'], ['bold', 'italics', 'underline'], ['insertImage', 'insertLink', 'insertVideo', 'html'], ['justifyLeft', 'justifyCenter', 'justifyRight']]">
+              <br><p><h3>Edit Web Page content</h3></p>
+          </div>
+        </form> <!-- end html box -->
+      </div>
+      <div class="col-md-3">
+        <!-- box -->
+        <div class="box">
+          <div class="box-header b-b">
+            <p>
+              <button class="btn info btn-block" ng-click="saveWebsite(websiteContent)"><i class="fa fa-file-text-o pull-left"></i>save web page</button>
+            </p>
+            <p>
+              <button class="btn danger btn-block" data-toggle="modal" data-target="#m"><i class="fa fa-long-arrow-left pull-left"></i>skip web page</button>
+            </p>
+            <!-- .modal -->
+            <div id="m" class="modal" data-backdrop="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!--<div class="modal-header">
+                  	<h5 class="modal-title">Modal</h5>
+                  </div>-->
+                  <div class="modal-body text-center p-lg">
+                    <p>Introduce a custom URL of your website</p>
+                    <p>
+                      <input type="url" class="form-control" placeholder="http://" ng-model="url">
+                      <button type="button" class="btn dark-white p-x-md" ng-click="skipToProfileWithURL(url)">Save</button>
+                    </p>
+                    <p>OR</p>
+                    <p>
+                      <button type="button" class="btn dark-white p-x-md" ng-click="skipToProfileWithoutURL(url)">Skyp</button><br>
+                      Skyp its not recommende due that any website its generated for you, still you can mofidy this option in your profile
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn danger p-x-md" data-dismiss="modal">Cancel</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div>
+            </div>
+            <!-- / .modal -->
+            <!--<h3>Purchased Repositories <span class="label success">2</span>    <button class="btn btn-sm white" ng-click="toggleBoughtRepo()"><i class="fa fa-caret-down"></i></button></h3>-->
+          </div>
+          <div>
+            <ul class="list">
+              <li class="list-item">
+                <div class="list-body">
+                  <!-- / insert price -->
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div> <!-- end box -->
+
+        <!-- box -->
+        <div class="box">
+          <div class="box-header b-b">
+            <h5>Charts</h5>
+            <div class="form-group row">
+              <select required class="form-control c-select m-y" ng-model="charType">
+                  <option value="- - - chart - - -">- - - chart - - -</option>
+                  <option value="Doughnut">Doughnut</option>
+                  <option value="Line">Line</option>
+              </select>
+              <!-- char picture -->
+              <!--<div ng-show="chartPicture">
+                <div class="row-cell">
+                  <div class="inline">
+                    <canvas id="canvas" style="width:100%"></canvas>
+                    <div class="box-footer clearfix" style="width:80%">
+      	              <button class="btn btn-info pull-right btn-sm"><i class="fa fa-plus"></i></button>
+      	            </div>
+                  </div>
+                </div>
+              </div>-->
+              <!-- end chart picture -->
+            </div>
+          </div>
+          <div>
+            <ul class="list">
+              <li class="list-item">
+                <div class="list-body">
+
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div> <!-- end box -->
+
+      </div>
+    </div> <!-- end row -->
+  </div>
+</div>

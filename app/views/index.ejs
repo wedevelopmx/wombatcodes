@@ -39,7 +39,7 @@
 
   </head>
   <body ng-app="geospatial" ng-controller="MainController as mainCtrl">
-    <!--<header id="header" ng-include="'assets/template/header.html'"></header>-->
+    <!--<header id="header" ng-include="'angular/templates/header.html'"></header>-->
 
           <!--<section class="notification" ng-class="{ active: message }" >
               <span ng-class="{danger: message.type == 'danger'}" ng-bind="message.text"></span>
@@ -49,7 +49,7 @@
     <!-- content -->
     <div id="content" class="app-content box-shadow-z0" role="main">
   <div class="app-header navbar-md white box-shadow">
-        <div ng-include="'assets/template/header.html'"></div>
+        <div ng-include="'angular/templates/header.html'"></div>
       </div>
       <div ng-view class="app-body" ng-class="{'container': app.setting.container}" id="view"></div>
       <!--<div class="dark dk pos-rlt" ng-class="{'hide': $state.current.data.hideFooter}">-->
@@ -65,7 +65,7 @@
       <div ui-include="'assets/blocks/switcher.html'"></div>
     </div>-->
     <!-- / -->
-  <!--	<header id="header" data-ng-include="'assets/template/header.html'"></header>
+  <!--	<header id="header" data-ng-include="'angular/templates/header.html'"></header>
   	<section id="main">
         <section class="notification" ng-class="{ active: message }" >
             <span ng-class="{danger: message.type == 'danger'}" ng-bind="message.text"></span>
@@ -76,7 +76,7 @@
     <!-- content -->
   <!--<div id="content" class="app-content box-shadow-z0" role="main">
     <div class="app-header navbar-md white box-shadow">
-      <div ui-include="'assets/template/header.html'"></div>
+      <div ui-include="'angular/templates/header.html'"></div>
     </div>
     <div ui-view class="app-body" ng-class="{'container': app.setting.container}" id="view"></div>
     <div class="dark dk pos-rlt" ng-class="{'hide': $state.current.data.hideFooter}">
@@ -132,24 +132,25 @@
     <!--<script type="text/javascript" src="vendor/braintree-angular/dist/braintree-angular.js"></script>-->
 
 
-    <script type="text/javascript" src="assets/scripts/app.js"></script>
+    <script type="text/javascript" src="angular/app.js"></script>
     <!-- Controllers -->
-    <script type="text/javascript" src="assets/scripts/controllers/main-controller.js"></script>
-    <script type="text/javascript" src="assets/scripts/controllers/dashboard-controller.js"></script>
-    <script type="text/javascript" src="assets/scripts/controllers/profile-controller.js"></script>
-    <script type="text/javascript" src="assets/scripts/controllers/github-import-controller.js"></script>
-    <script type="text/javascript" src="assets/scripts/controllers/repo-content-controller.js"></script>
-    <script type="text/javascript" src="assets/scripts/controllers/search-main-controller.js"></script>
-    <script type="text/javascript" src="assets/scripts/controllers/payment-controller.js"></script>
-    <script type="text/javascript" src="assets/scripts/controllers/import-controller.js"></script>
-    <script type="text/javascript" src="assets/scripts/controllers/project-controller.js"></script>
+    <script type="text/javascript" src="angular/controllers/main-controller.js"></script>
+    <script type="text/javascript" src="angular/controllers/dashboard-controller.js"></script>
+    <script type="text/javascript" src="angular/controllers/profile-controller.js"></script>
+    <script type="text/javascript" src="angular/controllers/github-import-controller.js"></script>
+    <script type="text/javascript" src="angular/controllers/repo-content-controller.js"></script>
+    <script type="text/javascript" src="angular/controllers/search-main-controller.js"></script>
+    <script type="text/javascript" src="angular/controllers/payment-controller.js"></script>
+    <script type="text/javascript" src="angular/controllers/import-controller.js"></script>
+    <script type="text/javascript" src="angular/controllers/project-controller.js"></script>
     <!-- Services -->
-    <script type="text/javascript" src="assets/scripts/services/auth-service.js"></script>
-    <script type="text/javascript" src="assets/scripts/services/project-service.js"></script>
-    <script type="text/javascript" src="assets/scripts/services/fakeData-service.js"></script>
+    <script type="text/javascript" src="angular/services/auth-service.js"></script>
+    <script type="text/javascript" src="angular/services/project-service.js"></script>
+    <script type="text/javascript" src="angular/services/fakeData-service.js"></script>
+    <script type="text/javascript" src="angular/services/repo-service.js"></script>
     <!-- Directives -->
-    <script type="text/javascript" src="assets/scripts/directives/enter.js"></script>
-    <script type="text/javascript" src="assets/scripts/directives/nav-directive.js"></script>
+    <script type="text/javascript" src="angular/directives/enter.js"></script>
+    <script type="text/javascript" src="angular/directives/nav-directive.js"></script>
 
   </body>
 </html>
