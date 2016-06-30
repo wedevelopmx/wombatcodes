@@ -1,7 +1,17 @@
 angular.module('geospatial')
-	.controller('ImportController', ['$scope', '$http', '$location',
-	 		function($scope, $http, $location) {
+	.controller('ImportController', ['$scope', '$http', '$location', 'repoInfo',
+	 		function($scope, $http, $location, repoInfo) {
 		console.log($scope.user);
+
+
+		/*
+		** website variables
+		*/
+		$scope.chartPicture = false;
+		$scope.charType = "- - - chart - - -";
+		$scope.chartObject = null;
+
+		//$scope.websiteContent = "";
 
 		/*
 		**  toggle
@@ -29,11 +39,15 @@ angular.module('geospatial')
 		}
 
 		$scope.saveRepository = function(repo){
+			console.log(repo);
 			var project = {
 				owner: repo.owner.login,
 				repository: repo.name,
 				id: '12345'
 			};
+
+			repoInfo.setRepoInfo(project.owner, project.repository, project.id);
+
 
 			/*$http.post('/project', project, function(res) {
 				console.log(res);
@@ -43,5 +57,8 @@ angular.module('geospatial')
 			window.location.href = '/edit#/profile/import/' + project.owner + '/' + project.repository;
 		//	$location.url('/profile/import/' + project.owner + '/' + project.repository);
 		};
+
+
+
 
 	}]);

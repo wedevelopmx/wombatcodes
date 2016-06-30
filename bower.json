@@ -183,6 +183,7 @@
     "underscore": "~1.8.3",
     "venturocket-angular-slider": "~0.3.2",
     "waves": "~0.7.2",
-    "textAngular": "^1.5.1"
+    "textAngular": "^1.5.1",
+    "angular-chart.js": "^0.10.2"
   }
 }

@@ -104,4 +104,30 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
+/**  website generator **/
+router.post('/api/webcreator', function(req, res, next) {
+  console.log('POST: -----------------------CREATE WEB------------------');
+
+  var website = {
+    owner : req.body.owner,
+    repository : req.body.repository,
+    id : 1 ,
+    content : req.body.content
+  }
+
+  // create a new nested folders path for the web index
+
+  exec('./script-web-creator.sh ' +
+          website.username + ' ' +
+          website.reponame + ' ' +
+          website.id + ' ' +
+          website.content, function(error, stdout, stderr) {
+    console.log('stdout: ' + stdout);
+    console.log('stderr: ' + stderr);
+    if (error !== null) {
+      console.log('exec error: ' + error);
+    }
+  });
+});
+
 module.exports = router;

@@ -60,10 +60,6 @@ angular.module('geospatial', [
 			templateUrl: 'assets/template/project/project.html',
 			controller: 'ProjectController'
 		},
-		/*'/profile/import/:user/:repo': {
-			templateUrl: 'assets/template/repository/repo-content.html',
-			controller: 'GithubImportController'
-		},*/
 		'/profile': {
 			templateUrl: 'assets/template/profile/profile.html',
 			controller: 'ProfileController'
@@ -71,6 +67,10 @@ angular.module('geospatial', [
 		'/profile/import': {
 			templateUrl: 'assets/template/profile/import.html',
 			controller: 'GithubImportController'
+		},
+		'/websites/:user/:repo': {
+			templateUrl: 'websites/:user/:repo/index.html',
+			controller: 'RepoContentController'
 		},
 		'/profile/import/:user/:repo': {
 			templateUrl: 'assets/template/repository/repo-content.html',
