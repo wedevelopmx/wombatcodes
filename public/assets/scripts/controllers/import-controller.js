@@ -1,7 +1,9 @@
 angular.module('geospatial')
-	.controller('ImportController', ['$scope', '$http', '$location',
-	 		function($scope, $http, $location) {
+	.controller('ImportController', ['$scope', '$http', '$location', 'Auth',
+	 		function($scope, $http, $location, Auth) {
+    Auth.refreshUser();
 		console.log($scope.user);
+
 
 		/*
 		**  toggle
@@ -35,13 +37,12 @@ angular.module('geospatial')
 				id: '12345'
 			};
 
-			/*$http.post('/project', project, function(res) {
+			$http.post('/project', project, function(res) {
 				console.log(res);
-				$location.url('/project/' + res.data.id);
-			});*/
+				$location.url('/profile');
+			});
 
-			window.location.href = '/edit#/profile/import/' + project.owner + '/' + project.repository;
-		//	$location.url('/profile/import/' + project.owner + '/' + project.repository);
+			//window.location.href = '/edit#/profile/import/' + project.owner + '/' + project.repository;
 		};
 
 	}]);
